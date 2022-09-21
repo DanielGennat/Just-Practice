@@ -1,3 +1,4 @@
+import { BUILD_ID_FILE } from 'next/dist/shared/lib/constants';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 
@@ -9,23 +10,23 @@ export default function Home() {
     if (seconds < 60 && minutes < 1) {
       return (
         <div>
-          <div>{seconds}</div>
+          <Time>{seconds}</Time>
         </div>
       );
     } else if (seconds < 10) {
       return (
         <div>
-          <div>
+          <Time>
             {minutes}:0{seconds}
-          </div>
+          </Time>
         </div>
       );
     } else {
       return (
         <div>
-          <div>
+          <Time>
             {minutes}:{seconds}
-          </div>
+          </Time>
         </div>
       );
     }
@@ -33,9 +34,14 @@ export default function Home() {
 
   return (
     <div>
-      <CountdownCircleTimer isPlaying duration={300} colors={'#abc'}>
+      <CountdownCircleTimer isPlaying duration={300} colors={'#daf6ff'}>
         {renderTime}
       </CountdownCircleTimer>
     </div>
   );
 }
+
+const Time = styled.div`
+  color: #daf6ff;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+`;
