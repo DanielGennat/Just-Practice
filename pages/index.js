@@ -4,15 +4,7 @@ import styled from 'styled-components';
 export default function Home() {
   return (
     <div>
-      <CountdownCircleTimer
-        isPlaying
-        duration={300}
-        colors={[
-          ['#004777', 0.33],
-          ['#F7B801', 0.33],
-          ['#A30000', 0.33],
-        ]}
-      >
+      <CountdownCircleTimer isPlaying duration={300} colors={'#abc'}>
         {({ remainingTime }) => remainingTime}
       </CountdownCircleTimer>
     </div>
