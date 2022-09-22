@@ -44,7 +44,12 @@ export default function Home() {
         height={4000}
       />
       <div>
-        <CountdownCircleTimer isPlaying duration={300} colors={'#daf6ff'}>
+        <CountdownCircleTimer
+          isPlaying
+          duration={33}
+          colors={['#daf6ff', '#dfe057', '#ff6666', '#b80a24']}
+          colorsTime={[30, 20, 10, 0]}
+        >
           {renderTime}
         </CountdownCircleTimer>
       </div>
