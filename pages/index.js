@@ -1,4 +1,6 @@
 import { BUILD_ID_FILE } from 'next/dist/shared/lib/constants';
+import Image from 'next/image';
+import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 
@@ -33,11 +35,20 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <CountdownCircleTimer isPlaying duration={300} colors={'#daf6ff'}>
-        {renderTime}
-      </CountdownCircleTimer>
-    </div>
+    <>
+      <Image
+        alt="background image man playing guitar on his back"
+        src={manPlayingGuitarOnHisBackImg}
+        layout="fill"
+        width={6000}
+        height={4000}
+      />
+      <div>
+        <CountdownCircleTimer isPlaying duration={300} colors={'#daf6ff'}>
+          {renderTime}
+        </CountdownCircleTimer>
+      </div>
+    </>
   );
 }
 
