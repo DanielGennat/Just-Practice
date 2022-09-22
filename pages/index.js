@@ -40,6 +40,7 @@ export default function Home() {
         alt="background image man playing guitar on his back"
         src={manPlayingGuitarOnHisBackImg}
         layout="fill"
+        objectFit="cover"
         width={6000}
         height={4000}
       />
@@ -56,6 +57,10 @@ export default function Home() {
     </>
   );
 }
+
+const ImageWrapper = styled.div`
+  position: fixed;
+`;
 
 const Time = styled.div`
   color: #daf6ff;
