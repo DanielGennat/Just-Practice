@@ -58,10 +58,6 @@ export default function Home() {
   );
 }
 
-const ImageWrapper = styled.div`
-  position: fixed;
-`;
-
 const Time = styled.div`
   color: #daf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
