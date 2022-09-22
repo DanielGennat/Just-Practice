@@ -47,7 +47,7 @@ export default function Home() {
       <div>
         <CountdownCircleTimer
           isPlaying
-          duration={33}
+          duration={300}
           colors={['#daf6ff', '#dfe057', '#ff6666', '#b80a24']}
           colorsTime={[30, 20, 10, 0]}
         >
@@ -59,6 +59,7 @@ export default function Home() {
 }
 
 const Time = styled.div`
+  font-size: 2rem;
   color: #daf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 `;
