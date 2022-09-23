@@ -8,7 +8,9 @@ export default function Home() {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
 
-    if (seconds < 60 && minutes < 1) {
+    if (remainingTime === 0) {
+      //sound notification goes here
+    } else if (seconds < 60 && minutes < 1) {
       return (
         <div>
           <Time>{seconds}</Time>
