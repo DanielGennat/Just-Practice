@@ -1,4 +1,3 @@
-import { BUILD_ID_FILE } from 'next/dist/shared/lib/constants';
 import Image from 'next/image';
 import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
@@ -67,4 +66,5 @@ const Time = styled.div`
 const TimerWrapper = styled.div`
   display: flex;
   justify-content: center;
+  margin: 10px;
 `;
