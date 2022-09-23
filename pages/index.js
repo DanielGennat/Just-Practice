@@ -44,7 +44,7 @@ export default function Home() {
         width={6000}
         height={4000}
       />
-      <div>
+      <TimerWrapper>
         <CountdownCircleTimer
           isPlaying
           duration={300}
@@ -53,7 +53,7 @@ export default function Home() {
         >
           {renderTime}
         </CountdownCircleTimer>
-      </div>
+      </TimerWrapper>
     </>
   );
 }
@@ -62,4 +62,9 @@ const Time = styled.div`
   font-size: 2rem;
   color: #daf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+`;
+
+const TimerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
