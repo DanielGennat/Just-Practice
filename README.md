@@ -7,3 +7,7 @@ Welcome to my capstone prject app "Just Practice"!
 ### Images
 
 - [man playing guitar on his back](https://unsplash.com/photos/IlfpKwRMln0) by [Alexandre St-Louis](https://unsplash.com/@alxstls?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText") on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText")
+
+### Sounds
+
+- expired-notification from [Zapsplat](https://www.zapsplat.com/)
