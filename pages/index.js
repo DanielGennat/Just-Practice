@@ -85,5 +85,5 @@ const ImageWrapper = styled.div`
 const TimerWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 10px;
+  padding: 5vh;
 `;
