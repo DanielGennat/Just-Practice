@@ -59,27 +59,34 @@ export default function Home() {
           objectFit="cover"
         />
       </ImageWrapper>
-      <TimerWrapper>
-        <CountdownCircleTimer
-          isPlaying
-          duration={3}
-          colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
-          colorsTime={[40, 30, 10, 0]}
-        >
-          {({ remainingTime }) =>
-            renderTime(remainingTime, playNotificationSound)
-          }
-        </CountdownCircleTimer>
-        <button>Click here to activate acoustic notification</button>
-      </TimerWrapper>
+      <TopWrapper>
+        <TimerWrapper>
+          <CountdownCircleTimer
+            isPlaying
+            duration={300}
+            colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
+            colorsTime={[40, 30, 10, 0]}
+          >
+            {({ remainingTime }) =>
+              renderTime(remainingTime, playNotificationSound)
+            }
+          </CountdownCircleTimer>
+        </TimerWrapper>
+      </TopWrapper>
+      <Button>Click anywhere to activate acoustic notification</Button>
     </>
   );
 }
 
 const Time = styled.div`
   font-size: 2rem;
-  color: #49f6ec;
-  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+  color: #caf6ff;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ImageWrapper = styled.div`
@@ -88,10 +95,32 @@ const ImageWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   z-index: -1;
+  background-color: black;
+`;
+
+const TopWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const TimerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 5vh;
+  background: radial-gradient(
+    circle,
+    transparent 30%,
+    rgba(10, 175, 230, 0.15) 50%,
+    transparent 72%
+  );
+  padding: 2vh;
+`;
+
+const Button = styled.div`
+  color: #caf6ff;
+  padding: 30px 10px;
+  background-color: rgba(10, 175, 230, 0.2);
+  display: inline-block;
+  margin: 50px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
 `;
