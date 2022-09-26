@@ -4,30 +4,23 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-export function setNotificationSound() {
-  const [audio, setAudio] = useState(null);
-  useEffect(() => {
-    setAudio(new Audio('/sounds/expired-notification.mp3'));
-  }, []);
-  return audio;
-}
-
-export function playNotificationSound() {
-  audio.play();
-}
-
-export function renderTime({ remainingTime }, playNotificationSound) {
+export function renderTime(remainingTime, playNotificationSound) {
   const minutes = Math.floor(remainingTime / 60);
   const seconds = remainingTime % 60;
 
-  const [audio, setAudio] = useState(null);
-  useEffect(() => {
-    setAudio(new Audio('/sounds/expired-notification.mp3'));
-  }, []);
+  // const [audio, setAudio] = useState(null);
+  // useEffect(() => {
+  //   setAudio(new Audio('/sounds/expired-notification.mp3'));
+  // }, []);
 
   if (remainingTime === 0) {
-    //playNotificationSound();
-    audio.play();
+    playNotificationSound();
+    //audio.play();
+    return (
+      <div>
+        <Time>{seconds}</Time>
+      </div>
+    );
   } else if (seconds < 60 && minutes < 1) {
     return (
       <div>
@@ -54,6 +47,14 @@ export function renderTime({ remainingTime }, playNotificationSound) {
 }
 
 export default function Home() {
+  const [audio, setAudio] = useState(null);
+  useEffect(() => {
+    setAudio(new Audio('/sounds/expired-notification.mp3'));
+  }, []);
+
+  function playNotificationSound() {
+    audio.play();
+  }
   return (
     <>
       <ImageWrapper>
@@ -71,7 +72,9 @@ export default function Home() {
           colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
           colorsTime={[40, 30, 10, 0]}
         >
-          {renderTime}
+          {({ remainingTime }) =>
+            renderTime(remainingTime, playNotificationSound)
+          }
         </CountdownCircleTimer>
         <button>Click here to activate acoustic notification</button>
       </TimerWrapper>
