@@ -4,43 +4,50 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-export default function Home() {
+export function setNotificationSound() {
   const [audio, setAudio] = useState(null);
   useEffect(() => {
     setAudio(new Audio('/sounds/expired-notification.mp3'));
   }, []);
+  return audio;
+}
 
-  const renderTime = ({ remainingTime }) => {
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
+export function playNotificationSound() {
+  audio.play();
+}
 
-    if (remainingTime === 0) {
-      audio.play();
-    } else if (seconds < 60 && minutes < 1) {
-      return (
-        <div>
-          <Time>{seconds}</Time>
-        </div>
-      );
-    } else if (seconds < 10) {
-      return (
-        <div>
-          <Time>
-            {minutes}:0{seconds}
-          </Time>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Time>
-            {minutes}:{seconds}
-          </Time>
-        </div>
-      );
-    }
-  };
+export function renderTime({ remainingTime }, playNotificationSound) {
+  const minutes = Math.floor(remainingTime / 60);
+  const seconds = remainingTime % 60;
 
+  if (remainingTime === 0) {
+    //playNotificationSound();
+  } else if (seconds < 60 && minutes < 1) {
+    return (
+      <div>
+        <Time>{seconds}</Time>
+      </div>
+    );
+  } else if (seconds < 10) {
+    return (
+      <div>
+        <Time>
+          {minutes}:0{seconds}
+        </Time>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Time>
+          {minutes}:{seconds}
+        </Time>
+      </div>
+    );
+  }
+}
+
+export default function Home() {
   return (
     <>
       <ImageWrapper>

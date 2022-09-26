@@ -1,6 +1,6 @@
-import Home from './index.js';
+import { renderTime } from './index.js';
 
-function Home(callback, remainingTime) {
+function renderTime(callback, remainingTime) {
   if (remainingTime === 0) {
     callback(playNotificationSound(url));
   }
