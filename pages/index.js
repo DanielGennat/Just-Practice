@@ -8,14 +8,8 @@ export function renderTime(remainingTime, playNotificationSound) {
   const minutes = Math.floor(remainingTime / 60);
   const seconds = remainingTime % 60;
 
-  // const [audio, setAudio] = useState(null);
-  // useEffect(() => {
-  //   setAudio(new Audio('/sounds/expired-notification.mp3'));
-  // }, []);
-
   if (remainingTime === 0) {
     playNotificationSound();
-    //audio.play();
     return (
       <div>
         <Time>{seconds}</Time>
