@@ -2,14 +2,17 @@ import Image from 'next/image';
 import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
+//import expiredNotification from '../public/sounds/expired-notification.mp3';
 
 export default function Home() {
   const renderTime = ({ remainingTime }) => {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
 
+    //const expiredNotification = new Audio('expired-notification.mp3');
+
     if (remainingTime === 0) {
-      //sound notification goes here
+      //expiredNotification.play();
     } else if (seconds < 60 && minutes < 1) {
       return (
         <div>
@@ -48,9 +51,9 @@ export default function Home() {
       <TimerWrapper>
         <CountdownCircleTimer
           isPlaying
-          duration={300}
-          colors={['#daf6ff', '#dfe057', '#ff6666', '#b80a24']}
-          colorsTime={[30, 20, 10, 0]}
+          duration={40}
+          colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
+          colorsTime={[40, 30, 10, 0]}
         >
           {renderTime}
         </CountdownCircleTimer>
@@ -61,7 +64,7 @@ export default function Home() {
 
 const Time = styled.div`
   font-size: 2rem;
-  color: #daf6ff;
+  color: #49f6ec;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 `;
 
