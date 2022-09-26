@@ -2,11 +2,11 @@ import { renderTime } from './index.js';
 
 function renderTime(callback, remainingTime) {
   if (remainingTime === 0) {
-    callback(playNotificationSound(url));
+    callback(playNotificationSound());
   }
 }
 
-describe('Home', () => {
+describe('renderTime', () => {
   test('timer has expired', () => {
     const playNotificationSound = jest.fn();
     Home(playNotificationSound, 0);
