@@ -73,7 +73,9 @@ export default function Home() {
           </CountdownCircleTimer>
         </TimerWrapper>
       </TopWrapper>
-      <Button>Click anywhere to activate acoustic notification</Button>
+      <UserInteractionInfo>
+        Click anywhere to activate acoustic notification
+      </UserInteractionInfo>
     </>
   );
 }
@@ -113,7 +115,7 @@ const TimerWrapper = styled.div`
   padding: 2vh;
 `;
 
-const Button = styled.div`
+const UserInteractionInfo = styled.div`
   color: #caf6ff;
   padding: 30px 10px;
   background-color: rgba(10, 175, 230, 0.2);
