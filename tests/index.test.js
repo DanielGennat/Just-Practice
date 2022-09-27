@@ -1,4 +1,4 @@
-import { renderTime } from './index.js';
+import { renderTime } from '../pages/index.js';
 
 describe('renderTime', () => {
   test('timer has expired', () => {
