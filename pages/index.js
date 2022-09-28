@@ -44,20 +44,11 @@ export function renderTime(remainingTime, playNotificationSound) {
 }
 
 export default function Home() {
+  const timerChain = [3, 1, 2, 1];
+  const [timerPointer, setTimerPointer] = useState(1);
+
   const [key, setKey] = useState(0);
-
-  // const {
-  //   path,
-  //   pathLength,
-  //   stroke,
-  //   strokeDashoffset,
-  //   remainingTime,
-  //   elapsedTime,
-  //   size,
-  //   strokeWidth,
-  // } = useCountdown({ isPlaying: true, duration: 4, colors: '#abc' });
-
-  //const timerIntervals = [3, 5, 300];
+  const [duration, setDuration] = useState(timerChain[0]);
 
   const [audio, setAudio] = useState(null);
   useEffect(() => {
@@ -65,27 +56,19 @@ export default function Home() {
   }, []);
 
   function playNotificationSound() {
-    //audio.play();
+    audio.play();
   }
 
   function setUpNextInterval() {
-    console.log('was called');
-    // const {
-    //   path,
-    //   pathLength,
-    //   stroke,
-    //   strokeDashoffset,
-    //   remainingTime,
-    //   elapsedTime,
-    //   size,
-    //   strokeWidth,
-    // } = useCountdown({ isPlaying: true, duration: 4, colors: '#abc' });
-    //setKey((prevKey) => prevKey + 1);
-    return {
-      shouldRepeat: true,
-      delay: 1,
-      newInitialRemainingTime: 5,
-    };
+    if (timerPointer === timerChain.length) {
+      //console.log('finished');
+    } else {
+      console.log('was called');
+      setKey((prevKey) => prevKey + 1);
+      setTimerPointer(timerPointer + 1);
+      console.log(timerPointer);
+      setDuration(timerChain[timerPointer]);
+    }
   }
 
   return (
@@ -103,7 +86,7 @@ export default function Home() {
           <CountdownCircleTimer
             key={key}
             isPlaying
-            duration={3}
+            duration={duration}
             colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
             colorsTime={[40, 30, 10, 0]}
             onComplete={setUpNextInterval}
