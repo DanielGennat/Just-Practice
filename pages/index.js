@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import {
+  CountdownCircleTimer,
+  useCountdown,
+} from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
@@ -41,14 +44,50 @@ export function renderTime(remainingTime, playNotificationSound) {
 }
 
 export default function Home() {
+  const [key, setKey] = useState(0);
+
+  // const {
+  //   path,
+  //   pathLength,
+  //   stroke,
+  //   strokeDashoffset,
+  //   remainingTime,
+  //   elapsedTime,
+  //   size,
+  //   strokeWidth,
+  // } = useCountdown({ isPlaying: true, duration: 4, colors: '#abc' });
+
+  //const timerIntervals = [3, 5, 300];
+
   const [audio, setAudio] = useState(null);
   useEffect(() => {
     setAudio(new Audio('/sounds/expired-notification.mp3'));
   }, []);
 
   function playNotificationSound() {
-    audio.play();
+    //audio.play();
   }
+
+  function setUpNextInterval() {
+    console.log('was called');
+    // const {
+    //   path,
+    //   pathLength,
+    //   stroke,
+    //   strokeDashoffset,
+    //   remainingTime,
+    //   elapsedTime,
+    //   size,
+    //   strokeWidth,
+    // } = useCountdown({ isPlaying: true, duration: 4, colors: '#abc' });
+    //setKey((prevKey) => prevKey + 1);
+    return {
+      shouldRepeat: true,
+      delay: 1,
+      newInitialRemainingTime: 5,
+    };
+  }
+
   return (
     <>
       <ImageWrapper>
@@ -62,10 +101,12 @@ export default function Home() {
       <TopWrapper>
         <TimerWrapper>
           <CountdownCircleTimer
+            key={key}
             isPlaying
-            duration={300}
+            duration={3}
             colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
             colorsTime={[40, 30, 10, 0]}
+            onComplete={setUpNextInterval}
           >
             {({ remainingTime }) =>
               renderTime(remainingTime, playNotificationSound)
