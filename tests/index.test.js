@@ -15,20 +15,12 @@ describe('renderTime', () => {
   });
 });
 
-// describe('duration', () => {
-//   test('changed to next item of timerChain', () => {
-//     const timerChain = [30, 60];
-//     const [timerPointer, setTimerPointer] = useState(0);
-//     let duration = timerChain[timerPointer];
-//     setUpNextInterval(timerChain, timerPointer, setTimerPointer);
-//     expect(duration).toBe(60);
-//   });
-// });
-
-describe('timperPointer', () => {
-  test('changed to next item of timerChain', () => {
+describe('timerPointer', () => {
+  test('changed to next index of timerChain', () => {
+    const timerChain = [30, 60];
     let timerPointer = 0;
-    setUpNextInterval(timerPointer);
-    expect(timerPointer).toBe(1);
+    const setTimerPointer = jest.fn();
+    setUpNextInterval(timerChain, timerPointer, setTimerPointer);
+    expect(setTimerPointer).toHaveBeenLastCalledWith(1);
   });
 });
