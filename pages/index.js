@@ -61,12 +61,9 @@ export default function Home() {
 
   function setUpNextInterval() {
     if (timerPointer === timerChain.length) {
-      //console.log('finished');
     } else {
-      console.log('was called');
       setKey((prevKey) => prevKey + 1);
       setTimerPointer(timerPointer + 1);
-      console.log(timerPointer);
       setDuration(timerChain[timerPointer]);
     }
   }
