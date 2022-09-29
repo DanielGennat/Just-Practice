@@ -43,12 +43,16 @@ export function renderTime(remainingTime, playNotificationSound) {
   }
 }
 
+export function setUpNextInterval(timerChain, timerPointer, setTimerPointer) {
+  if (timerPointer + 1 === timerChain.length) {
+  } else {
+    setTimerPointer(timerPointer + 1);
+  }
+}
+
 export default function Home() {
   const timerChain = [3, 1, 2, 1];
-  const [timerPointer, setTimerPointer] = useState(1);
-
-  const [key, setKey] = useState(0);
-  const [duration, setDuration] = useState(timerChain[0]);
+  const [timerPointer, setTimerPointer] = useState(0);
 
   const [audio, setAudio] = useState(null);
   useEffect(() => {
@@ -57,15 +61,6 @@ export default function Home() {
 
   function playNotificationSound() {
     audio.play();
-  }
-
-  function setUpNextInterval() {
-    if (timerPointer === timerChain.length) {
-    } else {
-      setKey((prevKey) => prevKey + 1);
-      setTimerPointer(timerPointer + 1);
-      setDuration(timerChain[timerPointer]);
-    }
   }
 
   return (
@@ -81,12 +76,14 @@ export default function Home() {
       <TopWrapper>
         <TimerWrapper>
           <CountdownCircleTimer
-            key={key}
+            key={timerPointer}
             isPlaying
-            duration={duration}
+            duration={timerChain[timerPointer]}
             colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
             colorsTime={[40, 30, 10, 0]}
-            onComplete={setUpNextInterval}
+            onComplete={() =>
+              setUpNextInterval(timerChain, timerPointer, setTimerPointer)
+            }
           >
             {({ remainingTime }) =>
               renderTime(remainingTime, playNotificationSound)
