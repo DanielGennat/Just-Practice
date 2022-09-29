@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
-import {
-  CountdownCircleTimer,
-  useCountdown,
-} from 'react-countdown-circle-timer';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
