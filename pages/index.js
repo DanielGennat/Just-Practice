@@ -44,8 +44,7 @@ export function renderTime(remainingTime, playNotificationSound) {
 }
 
 export function setUpNextInterval(timerChain, timerPointer, setTimerPointer) {
-  if (timerPointer + 1 === timerChain.length) {
-  } else {
+  if (timerPointer + 1 < timerChain.length) {
     setTimerPointer(timerPointer + 1);
   }
 }
