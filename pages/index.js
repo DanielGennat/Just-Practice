@@ -40,7 +40,16 @@ export function renderTime(remainingTime, playNotificationSound) {
   }
 }
 
+export function setUpNextInterval(timerChain, timerPointer, setTimerPointer) {
+  if (timerPointer + 1 < timerChain.length) {
+    setTimerPointer(timerPointer + 1);
+  }
+}
+
 export default function Home() {
+  const timerChain = [3, 1, 2, 1];
+  const [timerPointer, setTimerPointer] = useState(0);
+
   const [audio, setAudio] = useState(null);
   useEffect(() => {
     setAudio(new Audio('/sounds/expired-notification.mp3'));
@@ -49,6 +58,7 @@ export default function Home() {
   function playNotificationSound() {
     audio.play();
   }
+
   return (
     <>
       <ImageWrapper>
@@ -62,10 +72,14 @@ export default function Home() {
       <TopWrapper>
         <TimerWrapper>
           <CountdownCircleTimer
+            key={timerPointer}
             isPlaying
-            duration={300}
+            duration={timerChain[timerPointer]}
             colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
             colorsTime={[40, 30, 10, 0]}
+            onComplete={() =>
+              setUpNextInterval(timerChain, timerPointer, setTimerPointer)
+            }
           >
             {({ remainingTime }) =>
               renderTime(remainingTime, playNotificationSound)
