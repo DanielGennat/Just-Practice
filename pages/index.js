@@ -3,6 +3,7 @@ import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import FormHeadline from '../components/FormHeadline';
 
 export function renderTime(remainingTime, playNotificationSound) {
   const minutes = Math.floor(remainingTime / 60);
@@ -90,6 +91,7 @@ export default function Home() {
       <UserInteractionInfo>
         Click anywhere to activate acoustic notification
       </UserInteractionInfo>
+      <FormHeadline />
     </>
   );
 }
