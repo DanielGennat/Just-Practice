@@ -3,9 +3,10 @@ import { useState } from 'react';
 import TimerBackgroundImage from '../components/TimerComponents/TimerBackgroundImage';
 import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
+import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 
 export default function Home() {
-  const timerChain = [3, 1, 2, 1];
+  const [timerChain, setTimerChain] = useState([30, 60, 62, 100]);
   const [timerPointer, setTimerPointer] = useState(0);
 
   return (
@@ -22,6 +23,10 @@ export default function Home() {
         Click anywhere to activate acoustic notification
       </UserInteractionInfo>
       <FormHeadline />
+      <EditTimerChainForm
+        timerChain={timerChain}
+        setTimerChain={setTimerChain}
+      />
     </>
   );
 }
