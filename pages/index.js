@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import FormHeadline from '../components/FormHeadline';
+import TimerBackgroundImage from '../components/TimerBackgroundImage';
 
 export function renderTime(remainingTime, playNotificationSound) {
   const minutes = Math.floor(remainingTime / 60);
@@ -62,14 +61,7 @@ export default function Home() {
 
   return (
     <>
-      <ImageWrapper>
-        <Image
-          alt="background image man playing guitar on his back"
-          src={manPlayingGuitarOnHisBackImg}
-          layout="fill"
-          objectFit="cover"
-        />
-      </ImageWrapper>
+      <TimerBackgroundImage />
       <TopWrapper>
         <TimerWrapper>
           <CountdownCircleTimer
@@ -105,15 +97,6 @@ const Time = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const ImageWrapper = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-  background-color: black;
 `;
 
 const TopWrapper = styled.div`
