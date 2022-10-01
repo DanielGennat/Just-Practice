@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
+import manPlayingGuitarOnHisBackImg from '../../public/guitarOnBack.png';
 
 export default function TimerBackgroundImage() {
   return (
