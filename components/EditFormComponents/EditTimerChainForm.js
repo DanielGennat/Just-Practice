@@ -23,7 +23,7 @@ export default function EditTimerChainForm({ timerChain, setTimerChain }) {
                 name={`minutes of ${timer.id}`}
                 min="0"
                 max="59"
-                defaultValue={Math.floor(timer.duration / 60)}
+                defaultValue={timer.minutes}
                 required
               />
               <label htmlFor={`minutes of ${timer.id}`}>min.</label>
@@ -36,9 +36,9 @@ export default function EditTimerChainForm({ timerChain, setTimerChain }) {
                 name={`seconds of ${timer.id}`}
                 min="0"
                 max="59"
-                defaultValue={timer.duration % 60}
-                // value={time < 10 ? `0${time}` : time}
-                // onChange={(event) => setTime(event.target.value)}
+                //defaultValue={timer.seconds}
+                value={timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+                onChange={(event) => setTime(event.target.value)}
                 required
               />
               <label htmlFor={`seconds of ${timer.id}`}> sec.</label>

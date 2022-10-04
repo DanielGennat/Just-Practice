@@ -7,12 +7,15 @@ import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainF
 
 export default function Home() {
   const [timerChain, setTimerChain] = useState([
-    { id: 1, duration: 30 },
-    { id: 2, duration: 60 },
-    { id: 3, duration: 62 },
-    { id: 4, duration: 100 },
+    { 1: { id: 1, minutes: 0, seconds: 30 } },
+    { 2: { id: 2, minutes: 1, seconds: 0 } },
+    { 3: { id: 3, minutes: 1, seconds: 2 } },
+    { 4: { id: 4, minutes: 1, seconds: 40 } },
   ]);
   const [timerPointer, setTimerPointer] = useState(0);
+
+  console.log(timerChain.id.id);
+  //timerChain[timerPointer].minutes * 60 + timerChain[timerPointer].seconds
 
   return (
     <>
