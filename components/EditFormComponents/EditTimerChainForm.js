@@ -1,10 +1,18 @@
 import Image from 'next/image';
+import { useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
 
+export function handleSubmit(event) {
+  event.preventDefault();
+  console.log(event.target);
+}
+
 export default function EditTimerChainForm({ timerChain, setTimerChain }) {
+  const [time, setTime] = useState(timerChain);
+  console.log(time);
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <FormList>
         {timerChain.map((timer) => (
           <Li key={timer.id}>
@@ -29,6 +37,8 @@ export default function EditTimerChainForm({ timerChain, setTimerChain }) {
                 min="0"
                 max="59"
                 defaultValue={timer.duration % 60}
+                // value={time < 10 ? `0${time}` : time}
+                // onChange={(event) => setTime(event.target.value)}
                 required
               />
               <label htmlFor={`seconds of ${timer.id}`}> sec.</label>
