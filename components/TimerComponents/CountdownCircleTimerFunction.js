@@ -28,7 +28,7 @@ export default function CountdownCircleTimerFunction({
       <CountdownCircleTimer
         key={timerPointer}
         isPlaying
-        duration={timerChain[timerPointer]}
+        duration={timerChain[timerPointer].duration}
         colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
         colorsTime={[40, 30, 10, 0]}
         onComplete={() =>

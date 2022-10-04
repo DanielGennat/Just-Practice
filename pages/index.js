@@ -6,7 +6,12 @@ import CountdownCircleTimerFunction from '../components/TimerComponents/Countdow
 import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 
 export default function Home() {
-  const [timerChain, setTimerChain] = useState([30, 60, 62, 100]);
+  const [timerChain, setTimerChain] = useState([
+    { id: 1, duration: 30 },
+    { id: 2, duration: 60 },
+    { id: 3, duration: 62 },
+    { id: 4, duration: 100 },
+  ]);
   const [timerPointer, setTimerPointer] = useState(0);
 
   return (
