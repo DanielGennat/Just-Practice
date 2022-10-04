@@ -72,6 +72,9 @@ const InputAndLabelWrapper = styled.div`
 
 const Input = styled.input`
   text-align: right;
+  &::before {
+    content: '0';
+  }
 `;
 
 const Apply = styled.button`
