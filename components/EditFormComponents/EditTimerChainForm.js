@@ -38,7 +38,7 @@ export default function EditTimerChainForm({ timerChain, setTimerChain }) {
                 max="59"
                 //defaultValue={timer.seconds}
                 value={timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-                onChange={(event) => setTime(event.target.value)}
+                onChange={(event) => setTime({...time, event.target.value})}
                 required
               />
               <label htmlFor={`seconds of ${timer.id}`}> sec.</label>
