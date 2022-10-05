@@ -6,49 +6,94 @@ import hook from '../../public/hook.svg';
 export function handleSubmit(event) {
   event.preventDefault();
   console.log(event.target);
+  //hier nur noch restart-funktion
 }
 
-export default function EditTimerChainForm({ timerChain, setTimerChain }) {
-  const [time, setTime] = useState(timerChain);
-  console.log(time);
+export function value(seconds) {
+  if (seconds > 59) {
+    return 59;
+    //   } else if (seconds.lenght > 2) {
+    //     const slicedSeconds = seconds.slice(1);
+    //     return slicedSeconds;
+  } else if (seconds < 10) {
+    return `0${seconds}`;
+  } else {
+    return seconds;
+  }
+}
+
+export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
+  let value = event.target.value;
+  console.log(id);
+  console.log(value);
+  //   if (value.length > 2) {
+  //     let value = value.slice(1);
+  //     console.log(value);
+  //     return value;
+  //   } else {
+  //   }
+  setNewTimerChain(
+    newTimerChain.map((newTimer) => {
+      if (newTimer.id === id) {
+        return { ...newTimer, seconds: Number(value) };
+      }
+      return newTimer;
+    })
+  );
+}
+
+export default function EditTimerChainForm({ timerChain }) {
+  const [newTimerChain, setNewTimerChain] = useState(timerChain);
   return (
     <form onSubmit={handleSubmit}>
       <FormList>
-        {timerChain.map((timer) => (
-          <Li key={timer.id}>
+        {newTimerChain.map((newTimer) => (
+          <Li key={newTimer.id}>
             <InputAndLabelWrapper>
               <Input
                 type="number"
-                id={`minutes of ${timer.id}`}
-                name={`minutes of ${timer.id}`}
+                id={`minutes of ${newTimer.id}`}
+                name={`minutes of ${newTimer.id}`}
                 min="0"
                 max="59"
-                defaultValue={timer.minutes}
+                defaultValue={newTimer.minutes}
                 required
               />
-              <label htmlFor={`minutes of ${timer.id}`}>min.</label>
+              <label htmlFor={`minutes of ${newTimer.id}`}>min.</label>
             </InputAndLabelWrapper>
             <span>:</span>
             <InputAndLabelWrapper>
               <Input
                 type="number"
-                id={`seconds of ${timer.id}`}
-                name={`seconds of ${timer.id}`}
+                id={`seconds of ${newTimer.id}`}
+                name={`seconds of ${newTimer.id}`}
                 min="0"
                 max="59"
                 //defaultValue={timer.seconds}
-                value={timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-                onChange={(event) => setTime({...time, event.target.value})}
+                value={
+                  value(newTimer.seconds)
+                  //   newTimer.seconds < 10
+                  //     ? `0${newTimer.seconds}`
+                  //     : newTimer.seconds
+                }
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
                 required
               />
-              <label htmlFor={`seconds of ${timer.id}`}> sec.</label>
+              <label htmlFor={`seconds of ${newTimer.id}`}> sec.</label>
             </InputAndLabelWrapper>
           </Li>
         ))}
       </FormList>
       <Apply>
         <Image alt="hook" src={hook} width="42" height={41.71} />
-        <div>Apply</div>
+        <div>Restart</div>
       </Apply>
     </form>
   );
