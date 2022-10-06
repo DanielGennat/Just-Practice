@@ -5,6 +5,26 @@ import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 
+export function handleSubmit(
+  event,
+  newTimerChain,
+  timerChain,
+  setTimerChain,
+  setTimerPointer,
+  key,
+  setKey
+) {
+  //debugger;
+  event.preventDefault();
+  setTimerChain(newTimerChain);
+  setTimerPointer(0);
+  setKey(key + 1); //warum undefined??
+
+  console.log(event.target);
+  console.log(timerChain);
+  console.log(key);
+}
+
 export default function Home() {
   const [timerChain, setTimerChain] = useState([
     { id: 1, minutes: 0, seconds: 30 },
@@ -13,6 +33,11 @@ export default function Home() {
     { id: 4, minutes: 1, seconds: 40 },
   ]);
   const [timerPointer, setTimerPointer] = useState(0);
+  const [key, setKey] = useState(0);
+
+  // console.log(timerChain);
+  // console.log(timerPointer);
+  console.log(key);
 
   return (
     <>
@@ -22,13 +47,22 @@ export default function Home() {
           timerChain={timerChain}
           timerPointer={timerPointer}
           setTimerPointer={setTimerPointer}
+          key={key}
+          setKey={setKey}
         />
       </TopWrapper>
       <UserInteractionInfo>
         Click anywhere to activate acoustic notification
       </UserInteractionInfo>
       <FormHeadline />
-      <EditTimerChainForm timerChain={timerChain} />
+      <EditTimerChainForm
+        timerChain={timerChain}
+        setTimerChain={setTimerChain}
+        setTimerPointer={setTimerPointer}
+        handleSubmit={handleSubmit}
+        key={key}
+        setKey={setKey}
+      />
     </>
   );
 }

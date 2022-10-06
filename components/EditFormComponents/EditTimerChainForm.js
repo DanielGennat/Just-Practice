@@ -3,31 +3,39 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
 
-export function handleSubmit(event) {
-  event.preventDefault();
-  console.log(event.target);
-  //hier nur noch restart-funktion
-}
+// export function handleSubmit(
+//   event,
+//   newTimerChain,
+//   setTimerChain,
+//   setTimerPointer
+// ) {
+//   event.preventDefault();
+//   setTimerChain(newTimerChain);
+//   setTimerPointer(0);
 
-export function value(seconds) {
-  if (seconds > 59) {
-    return 59;
-    //   } else if (seconds.lenght > 2) {
-    //     const slicedSeconds = seconds.slice(1);
-    //     return slicedSeconds;
-  } else if (seconds < 10) {
-    return `0${seconds}`;
-  } else {
-    return seconds;
-  }
-}
+//   console.log(event.target);
+//   //hier nur noch restart-funktion
+// }
+
+// export function value(seconds) {
+//   if (seconds > 59) {
+//     return 59;
+//     //   } else if (seconds.length > 2) {
+//     //     const slicedSeconds = seconds.slice(1);
+//     //     return slicedSeconds;
+//   } else if (seconds < 10) {
+//     return `0${seconds}`;
+//   } else {
+//     return seconds;
+//   }
+// }
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   let value = event.target.value;
   console.log(id);
   console.log(value);
   //   if (value.length > 2) {
-  //     let value = value.slice(1);
+  //     value = value.slice(1);
   //     console.log(value);
   //     return value;
   //   } else {
@@ -42,10 +50,29 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   );
 }
 
-export default function EditTimerChainForm({ timerChain }) {
+export default function EditTimerChainForm({
+  timerChain,
+  setTimerChain,
+  setTimerPointer,
+  handleSubmit,
+  key,
+  setKey,
+}) {
   const [newTimerChain, setNewTimerChain] = useState(timerChain);
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(event) =>
+        handleSubmit(
+          event,
+          newTimerChain,
+          timerChain,
+          setTimerChain,
+          setTimerPointer,
+          key,
+          setKey
+        )
+      }
+    >
       <FormList>
         {newTimerChain.map((newTimer) => (
           <Li key={newTimer.id}>
@@ -71,10 +98,10 @@ export default function EditTimerChainForm({ timerChain }) {
                 max="59"
                 //defaultValue={timer.seconds}
                 value={
-                  value(newTimer.seconds)
-                  //   newTimer.seconds < 10
-                  //     ? `0${newTimer.seconds}`
-                  //     : newTimer.seconds
+                  //   value(newTimer.seconds)
+                  newTimer.seconds < 10
+                    ? `0${newTimer.seconds}`
+                    : newTimer.seconds
                 }
                 onChange={(event) =>
                   changeTimerChain(
@@ -91,7 +118,7 @@ export default function EditTimerChainForm({ timerChain }) {
           </Li>
         ))}
       </FormList>
-      <Apply>
+      <Apply type="submit">
         <Image alt="hook" src={hook} width="42" height={41.71} />
         <div>Restart</div>
       </Apply>

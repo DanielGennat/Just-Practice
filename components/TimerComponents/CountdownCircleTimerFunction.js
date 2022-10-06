@@ -3,9 +3,15 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
 import RenderTime from './RenderTime';
 
-export function setUpNextInterval(timerChain, timerPointer, setTimerPointer) {
+export function setUpNextInterval(
+  timerChain,
+  timerPointer,
+  setTimerPointer,
+  setKey
+) {
   if (timerPointer + 1 < timerChain.length) {
     setTimerPointer(timerPointer + 1);
+    setKey(timerPointer); //an dieser Stelle wird der key mit dem timerPointer wieder synchronisiert
   }
 }
 
@@ -13,6 +19,8 @@ export default function CountdownCircleTimerFunction({
   timerChain,
   timerPointer,
   setTimerPointer,
+  key,
+  setKey,
 }) {
   const [audio, setAudio] = useState(null);
   useEffect(() => {
@@ -26,7 +34,7 @@ export default function CountdownCircleTimerFunction({
   return (
     <TimerWrapper>
       <CountdownCircleTimer
-        key={timerPointer}
+        key={key}
         isPlaying
         duration={
           timerChain[timerPointer].minutes * 60 +
@@ -35,7 +43,7 @@ export default function CountdownCircleTimerFunction({
         colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
         colorsTime={[40, 30, 10, 0]}
         onComplete={() =>
-          setUpNextInterval(timerChain, timerPointer, setTimerPointer)
+          setUpNextInterval(timerChain, timerPointer, setTimerPointer, setKey)
         }
       >
         {({ remainingTime }) =>
