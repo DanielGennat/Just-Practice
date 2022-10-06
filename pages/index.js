@@ -30,9 +30,9 @@ export default function Home() {
   const [timerPointer, setTimerPointer] = useState(0);
   const [countdownKey, setCountdownKey] = useState(0);
 
-  console.log(timerChain);
-  console.log('timerPointer=', timerPointer);
-  console.log('countdownKey', countdownKey);
+  console.log('timerChain=', timerChain);
+  // console.log('timerPointer=', timerPointer);
+  // console.log('countdownKey', countdownKey);
 
   return (
     <>
