@@ -55,8 +55,8 @@ export default function EditTimerChainForm({
   setTimerChain,
   setTimerPointer,
   handleSubmit,
-  key,
-  setKey,
+  countdownKey,
+  setCountdownKey,
 }) {
   const [newTimerChain, setNewTimerChain] = useState(timerChain);
   return (
@@ -68,8 +68,8 @@ export default function EditTimerChainForm({
           timerChain,
           setTimerChain,
           setTimerPointer,
-          key,
-          setKey
+          countdownKey,
+          setCountdownKey
         )
       }
     >

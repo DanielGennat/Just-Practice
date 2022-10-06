@@ -7,11 +7,11 @@ export function setUpNextInterval(
   timerChain,
   timerPointer,
   setTimerPointer,
-  setKey
+  setCountdownKey
 ) {
   if (timerPointer + 1 < timerChain.length) {
     setTimerPointer(timerPointer + 1);
-    setKey(timerPointer); //an dieser Stelle wird der key mit dem timerPointer wieder synchronisiert
+    setCountdownKey(timerPointer + 1); //an dieser Stelle wird der key mit dem timerPointer wieder synchronisiert
   }
 }
 
@@ -19,8 +19,8 @@ export default function CountdownCircleTimerFunction({
   timerChain,
   timerPointer,
   setTimerPointer,
-  key,
-  setKey,
+  countdownKey,
+  setCountdownKey,
 }) {
   const [audio, setAudio] = useState(null);
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function CountdownCircleTimerFunction({
   return (
     <TimerWrapper>
       <CountdownCircleTimer
-        key={key}
+        key={countdownKey}
         isPlaying
         duration={
           timerChain[timerPointer].minutes * 60 +
@@ -43,7 +43,12 @@ export default function CountdownCircleTimerFunction({
         colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
         colorsTime={[40, 30, 10, 0]}
         onComplete={() =>
-          setUpNextInterval(timerChain, timerPointer, setTimerPointer, setKey)
+          setUpNextInterval(
+            timerChain,
+            timerPointer,
+            setTimerPointer,
+            setCountdownKey
+          )
         }
       >
         {({ remainingTime }) =>

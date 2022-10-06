@@ -11,18 +11,13 @@ export function handleSubmit(
   timerChain,
   setTimerChain,
   setTimerPointer,
-  key,
-  setKey
+  countdownKey,
+  setCountdownKey
 ) {
-  //debugger;
   event.preventDefault();
   setTimerChain(newTimerChain);
   setTimerPointer(0);
-  setKey(key + 1); //warum undefined??
-
-  console.log(event.target);
-  console.log(timerChain);
-  console.log(key);
+  setCountdownKey(countdownKey + 1);
 }
 
 export default function Home() {
@@ -33,11 +28,11 @@ export default function Home() {
     { id: 4, minutes: 1, seconds: 40 },
   ]);
   const [timerPointer, setTimerPointer] = useState(0);
-  const [key, setKey] = useState(0);
+  const [countdownKey, setCountdownKey] = useState(0);
 
-  // console.log(timerChain);
-  // console.log(timerPointer);
-  console.log(key);
+  console.log(timerChain);
+  console.log('timerPointer=', timerPointer);
+  console.log('countdownKey', countdownKey);
 
   return (
     <>
@@ -47,8 +42,8 @@ export default function Home() {
           timerChain={timerChain}
           timerPointer={timerPointer}
           setTimerPointer={setTimerPointer}
-          key={key}
-          setKey={setKey}
+          countdownKey={countdownKey}
+          setCountdownKey={setCountdownKey}
         />
       </TopWrapper>
       <UserInteractionInfo>
@@ -60,8 +55,8 @@ export default function Home() {
         setTimerChain={setTimerChain}
         setTimerPointer={setTimerPointer}
         handleSubmit={handleSubmit}
-        key={key}
-        setKey={setKey}
+        countdownKey={countdownKey}
+        setCountdownKey={setCountdownKey}
       />
     </>
   );
