@@ -95,8 +95,7 @@ export default function EditTimerChainForm({
                 name="minutes"
                 min="0"
                 max="59"
-                //defaultValue={newTimer.minutes < 1 ? '' : newTimer.minutes}
-                value={newTimer.minutes}
+                value={newTimer.minutes < 1 ? '' : newTimer.minutes}
                 onChange={(event) =>
                   changeTimerChain(
                     event,
@@ -105,7 +104,6 @@ export default function EditTimerChainForm({
                     setNewTimerChain
                   )
                 }
-                //required
               />
               <label htmlFor={`minutes of ${newTimer.id}`}>min.</label>
             </InputAndLabelWrapper>
