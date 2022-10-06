@@ -34,6 +34,13 @@ export default function Home() {
   // console.log('timerPointer=', timerPointer);
   // console.log('countdownKey', countdownKey);
 
+  if (
+    (timerPointer + 1 < timerChain.length) &
+    (timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1)
+  ) {
+    setTimerPointer(timerPointer + 1);
+  }
+
   return (
     <>
       <TimerBackgroundImage />

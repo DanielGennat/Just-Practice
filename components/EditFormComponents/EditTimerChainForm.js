@@ -31,6 +31,7 @@ import hook from '../../public/hook.svg';
 // }
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
+  //alert('test alert');
   let value = event.target.value;
   console.log(event.target);
   console.log('id=', id);
