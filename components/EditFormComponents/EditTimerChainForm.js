@@ -35,12 +35,11 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   console.log(event.target);
   console.log('id=', id);
   console.log('value=', value);
-  //   if (value.length > 2) {
-  //     value = value.slice(1);
-  //     console.log(value);
-  //     return value;
-  //   } else {
-  //   }
+  if (value.length > 2) {
+    value = value.slice(1);
+    console.log('sliced value=', value);
+    return value;
+  }
   if (event.target.name === 'seconds') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
