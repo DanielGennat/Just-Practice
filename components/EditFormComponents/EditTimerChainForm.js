@@ -32,22 +32,34 @@ import hook from '../../public/hook.svg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   let value = event.target.value;
-  console.log(id);
-  console.log(value);
+  console.log(event.target);
+  console.log('id=', id);
+  console.log('value=', value);
   //   if (value.length > 2) {
   //     value = value.slice(1);
   //     console.log(value);
   //     return value;
   //   } else {
   //   }
-  setNewTimerChain(
-    newTimerChain.map((newTimer) => {
-      if (newTimer.id === id) {
-        return { ...newTimer, seconds: Number(value) };
-      }
-      return newTimer;
-    })
-  );
+  if (event.target.name === 'seconds') {
+    setNewTimerChain(
+      newTimerChain.map((newTimer) => {
+        if (newTimer.id === id) {
+          return { ...newTimer, seconds: Number(value) };
+        }
+        return newTimer;
+      })
+    );
+  } else {
+    setNewTimerChain(
+      newTimerChain.map((newTimer) => {
+        if (newTimer.id === id) {
+          return { ...newTimer, minutes: Number(value) };
+        }
+        return newTimer;
+      })
+    );
+  }
 }
 
 export default function EditTimerChainForm({
@@ -80,10 +92,20 @@ export default function EditTimerChainForm({
               <Input
                 type="number"
                 id={`minutes of ${newTimer.id}`}
-                name={`minutes of ${newTimer.id}`}
+                name="minutes"
                 min="0"
                 max="59"
-                defaultValue={newTimer.minutes < 1 ? '' : newTimer.minutes}
+                //defaultValue={newTimer.minutes < 1 ? '' : newTimer.minutes}
+                value={newTimer.minutes}
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
+                //required
               />
               <label htmlFor={`minutes of ${newTimer.id}`}>min.</label>
             </InputAndLabelWrapper>
@@ -92,7 +114,7 @@ export default function EditTimerChainForm({
               <Input
                 type="number"
                 id={`seconds of ${newTimer.id}`}
-                name={`seconds of ${newTimer.id}`}
+                name="seconds"
                 min="0"
                 max="59"
                 //defaultValue={timer.seconds}
