@@ -83,8 +83,7 @@ export default function EditTimerChainForm({
                 name={`minutes of ${newTimer.id}`}
                 min="0"
                 max="59"
-                defaultValue={newTimer.minutes}
-                required
+                defaultValue={newTimer.minutes < 1 ? '' : newTimer.minutes}
               />
               <label htmlFor={`minutes of ${newTimer.id}`}>min.</label>
             </InputAndLabelWrapper>
