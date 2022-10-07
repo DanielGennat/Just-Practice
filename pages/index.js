@@ -23,7 +23,7 @@ export function handleSubmit(
 export default function Home() {
   const [timerChain, setTimerChain] = useState([
     { id: 1, minutes: 0, seconds: 30 },
-    { id: 2, minutes: 1, seconds: 0 },
+    { id: 2, minutes: 1, seconds: 10 },
     { id: 3, minutes: 1, seconds: 2 },
     { id: 4, minutes: 1, seconds: 40 },
   ]);

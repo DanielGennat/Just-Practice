@@ -26,7 +26,7 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   //     console.log('sliced value=', value);
   //     return value;
   //   }
-  if (event.target.name === 'seconds') {
+  if (event.target.id === 'seconds') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
@@ -56,6 +56,12 @@ export default function EditTimerChainForm({
   setCountdownKey,
 }) {
   const [newTimerChain, setNewTimerChain] = useState(timerChain);
+
+  const timeOptions = [];
+  for (let i = 0; i <= 59; i++) {
+    timeOptions.push(i);
+  }
+
   return (
     <form
       onSubmit={(event) =>
@@ -94,7 +100,7 @@ export default function EditTimerChainForm({
             </InputAndLabelWrapper>
             <span>:</span>
             <InputAndLabelWrapper>
-              <Input
+              {/* <Input
                 type="number"
                 id={`seconds of ${newTimer.id}`}
                 name="seconds"
@@ -116,8 +122,32 @@ export default function EditTimerChainForm({
                   )
                 }
                 required
-              />
-              <Label htmlFor={`seconds of ${newTimer.id}`}> sec.</Label>
+              /> */}
+              <select
+                id="seconds"
+                value={
+                  newTimer.seconds < 10
+                    ? `0${newTimer.seconds}`
+                    : newTimer.seconds
+                }
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
+              >
+                {timeOptions.map((option) => {
+                  return (
+                    <option key={option} value={option}>
+                      {option < 10 ? `0${option}` : option}
+                    </option>
+                  );
+                })}
+              </select>
+              <Label htmlFor="seconds"> sec.</Label>
             </InputAndLabelWrapper>
           </Li>
         ))}
