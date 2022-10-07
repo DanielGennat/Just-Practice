@@ -163,7 +163,7 @@ const Apply = styled.button`
   background-color: rgba(52, 108, 61, 1);
   width: 167px;
   height: 64px;
-  border: 1px solid #000000;
+  border: none;
   border-radius: 5px;
   position: absolute;
   right: 10px;
