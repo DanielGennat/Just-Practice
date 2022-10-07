@@ -80,7 +80,7 @@ export default function EditTimerChainForm({
         {newTimerChain.map((newTimer) => (
           <Li key={newTimer.id}>
             <InputAndLabelWrapper>
-              <Input
+              {/* <Input
                 type="number"
                 id={`minutes of ${newTimer.id}`}
                 name="minutes"
@@ -95,8 +95,28 @@ export default function EditTimerChainForm({
                     setNewTimerChain
                   )
                 }
-              />
-              <Label htmlFor={`minutes of ${newTimer.id}`}>min.</Label>
+              /> */}
+              <Select
+                id="minutes"
+                value={newTimer.minutes}
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
+              >
+                {timeOptions.map((option) => {
+                  return (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  );
+                })}
+              </Select>
+              <Label htmlFor="minutes">min.</Label>
             </InputAndLabelWrapper>
             <span>:</span>
             <InputAndLabelWrapper>
@@ -123,13 +143,9 @@ export default function EditTimerChainForm({
                 }
                 required
               /> */}
-              <select
+              <Select
                 id="seconds"
-                value={
-                  newTimer.seconds < 10
-                    ? `0${newTimer.seconds}`
-                    : newTimer.seconds
-                }
+                value={newTimer.seconds}
                 onChange={(event) =>
                   changeTimerChain(
                     event,
@@ -146,7 +162,7 @@ export default function EditTimerChainForm({
                     </option>
                   );
                 })}
-              </select>
+              </Select>
               <Label htmlFor="seconds"> sec.</Label>
             </InputAndLabelWrapper>
           </Li>
@@ -187,6 +203,7 @@ const InputAndLabelWrapper = styled.div`
   align-items: center;
 `;
 
+//kann dann weg
 const Input = styled.input`
   text-align: right;
   background-color: #edffdf;
@@ -194,6 +211,15 @@ const Input = styled.input`
   margin: 0 1px;
   border-radius: 5px;
   //border: 1px solid;
+  border: none;
+`;
+
+const Select = styled.select`
+  text-align: right;
+  background-color: #edffdf;
+  width: 50px;
+  margin: 0 1px;
+  border-radius: 5px;
   border: none;
 `;
 
