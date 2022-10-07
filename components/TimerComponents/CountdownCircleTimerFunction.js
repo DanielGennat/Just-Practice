@@ -11,7 +11,7 @@ export function setUpNextInterval(
 ) {
   if (timerPointer + 1 < timerChain.length) {
     setTimerPointer(timerPointer + 1);
-    setCountdownKey(timerPointer + 1); //an dieser Stelle wird der key mit dem timerPointer wieder synchronisiert
+    setCountdownKey(timerPointer + 1);
   }
 }
 

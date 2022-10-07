@@ -3,34 +3,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
 
-// export function value(seconds) {
-//   if (seconds > 59) {
-//     return 59;
-//     //   } else if (seconds.length > 2) {
-//     //     const slicedSeconds = seconds.slice(1);
-//     //     return slicedSeconds;
-//   } else if (seconds < 10) {
-//     return `0${seconds}`;
-//   } else {
-//     return seconds;
-//   }
-// }
-
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
-  let value = event.target.value;
-  console.log(event.target);
-  console.log('id=', id);
-  console.log('value=', value);
-  //   if (value.length > 2) {
-  //     value = value.slice(1);
-  //     console.log('sliced value=', value);
-  //     return value;
-  //   }
   if (event.target.id === 'seconds') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
-          return { ...newTimer, seconds: Number(value) };
+          return { ...newTimer, seconds: Number(event.target.value) };
         }
         return newTimer;
       })
@@ -39,7 +17,7 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
-          return { ...newTimer, minutes: Number(value) };
+          return { ...newTimer, minutes: Number(event.target.value) };
         }
         return newTimer;
       })
@@ -68,7 +46,6 @@ export default function EditTimerChainForm({
         handleSubmit(
           event,
           newTimerChain,
-          timerChain,
           setTimerChain,
           setTimerPointer,
           countdownKey,
@@ -80,22 +57,6 @@ export default function EditTimerChainForm({
         {newTimerChain.map((newTimer) => (
           <Li key={newTimer.id}>
             <InputAndLabelWrapper>
-              {/* <Input
-                type="number"
-                id={`minutes of ${newTimer.id}`}
-                name="minutes"
-                min="0"
-                max="59"
-                value={newTimer.minutes < 1 ? '' : newTimer.minutes}
-                onChange={(event) =>
-                  changeTimerChain(
-                    event,
-                    newTimer.id,
-                    newTimerChain,
-                    setNewTimerChain
-                  )
-                }
-              /> */}
               <Select
                 id="minutes"
                 value={newTimer.minutes}
@@ -120,29 +81,6 @@ export default function EditTimerChainForm({
             </InputAndLabelWrapper>
             <span>:</span>
             <InputAndLabelWrapper>
-              {/* <Input
-                type="number"
-                id={`seconds of ${newTimer.id}`}
-                name="seconds"
-                min="0"
-                max="59"
-                //defaultValue={timer.seconds}
-                value={
-                  //   value(newTimer.seconds)
-                  newTimer.seconds < 10
-                    ? `0${newTimer.seconds}`
-                    : newTimer.seconds
-                }
-                onChange={(event) =>
-                  changeTimerChain(
-                    event,
-                    newTimer.id,
-                    newTimerChain,
-                    setNewTimerChain
-                  )
-                }
-                required
-              /> */}
               <Select
                 id="seconds"
                 value={newTimer.seconds}
@@ -201,17 +139,6 @@ const InputAndLabelWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-//kann dann weg
-const Input = styled.input`
-  text-align: right;
-  background-color: #edffdf;
-  width: 50px;
-  margin: 0 1px;
-  border-radius: 5px;
-  //border: 1px solid;
-  border: none;
 `;
 
 const Select = styled.select`

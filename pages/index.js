@@ -8,7 +8,6 @@ import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainF
 export function handleSubmit(
   event,
   newTimerChain,
-  timerChain,
   setTimerChain,
   setTimerPointer,
   countdownKey,
@@ -29,10 +28,6 @@ export default function Home() {
   ]);
   const [timerPointer, setTimerPointer] = useState(0);
   const [countdownKey, setCountdownKey] = useState(0);
-
-  console.log('timerChain=', timerChain);
-  // console.log('timerPointer=', timerPointer);
-  // console.log('countdownKey', countdownKey);
 
   if (
     (timerPointer + 1 < timerChain.length) &
