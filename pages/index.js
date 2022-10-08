@@ -1,132 +1,72 @@
-import Image from 'next/image';
-import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import TimerBackgroundImage from '../components/TimerComponents/TimerBackgroundImage';
+import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
+import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
+import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 
-export function renderTime(remainingTime, playNotificationSound) {
-  const minutes = Math.floor(remainingTime / 60);
-  const seconds = remainingTime % 60;
-
-  if (remainingTime === 0) {
-    playNotificationSound();
-    return (
-      <div>
-        <Time>{seconds}</Time>
-      </div>
-    );
-  } else if (seconds < 60 && minutes < 1) {
-    return (
-      <div>
-        <Time>{seconds}</Time>
-      </div>
-    );
-  } else if (seconds < 10) {
-    return (
-      <div>
-        <Time>
-          {minutes}:0{seconds}
-        </Time>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <Time>
-          {minutes}:{seconds}
-        </Time>
-      </div>
-    );
-  }
-}
-
-export function setUpNextInterval(timerChain, timerPointer, setTimerPointer) {
-  if (timerPointer + 1 < timerChain.length) {
-    setTimerPointer(timerPointer + 1);
-  }
+export function handleSubmit(
+  event,
+  newTimerChain,
+  setTimerChain,
+  setTimerPointer,
+  countdownKey,
+  setCountdownKey
+) {
+  event.preventDefault();
+  setTimerChain(newTimerChain);
+  setTimerPointer(0);
+  setCountdownKey(countdownKey + 1);
 }
 
 export default function Home() {
-  const timerChain = [3, 1, 2, 1];
+  const [timerChain, setTimerChain] = useState([
+    { id: 1, minutes: 0, seconds: 30 },
+    { id: 2, minutes: 1, seconds: 10 },
+    { id: 3, minutes: 1, seconds: 2 },
+    { id: 4, minutes: 1, seconds: 40 },
+  ]);
   const [timerPointer, setTimerPointer] = useState(0);
+  const [countdownKey, setCountdownKey] = useState(0);
 
-  const [audio, setAudio] = useState(null);
-  useEffect(() => {
-    setAudio(new Audio('/sounds/expired-notification.mp3'));
-  }, []);
-
-  function playNotificationSound() {
-    audio.play();
+  if (
+    (timerPointer + 1 < timerChain.length) &
+    (timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1)
+  ) {
+    setTimerPointer(timerPointer + 1);
   }
 
   return (
     <>
-      <ImageWrapper>
-        <Image
-          alt="background image man playing guitar on his back"
-          src={manPlayingGuitarOnHisBackImg}
-          layout="fill"
-          objectFit="cover"
-        />
-      </ImageWrapper>
+      <TimerBackgroundImage />
       <TopWrapper>
-        <TimerWrapper>
-          <CountdownCircleTimer
-            key={timerPointer}
-            isPlaying
-            duration={timerChain[timerPointer]}
-            colors={['#49F6EC', '#dfe057', '#ff6666', '#b80a24']}
-            colorsTime={[40, 30, 10, 0]}
-            onComplete={() =>
-              setUpNextInterval(timerChain, timerPointer, setTimerPointer)
-            }
-          >
-            {({ remainingTime }) =>
-              renderTime(remainingTime, playNotificationSound)
-            }
-          </CountdownCircleTimer>
-        </TimerWrapper>
+        <CountdownCircleTimerFunction
+          timerChain={timerChain}
+          timerPointer={timerPointer}
+          setTimerPointer={setTimerPointer}
+          countdownKey={countdownKey}
+          setCountdownKey={setCountdownKey}
+        />
       </TopWrapper>
       <UserInteractionInfo>
         Click anywhere to activate acoustic notification
       </UserInteractionInfo>
+      <FormHeadline />
+      <EditTimerChainForm
+        timerChain={timerChain}
+        setTimerChain={setTimerChain}
+        setTimerPointer={setTimerPointer}
+        handleSubmit={handleSubmit}
+        countdownKey={countdownKey}
+        setCountdownKey={setCountdownKey}
+      />
     </>
   );
 }
 
-const Time = styled.div`
-  font-size: 2rem;
-  color: #caf6ff;
-  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  width: 120px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ImageWrapper = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-  background-color: black;
-`;
-
 const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const TimerWrapper = styled.div`
-  background: radial-gradient(
-    circle,
-    transparent 30%,
-    rgba(10, 175, 230, 0.15) 50%,
-    transparent 72%
-  );
-  padding: 2vh;
 `;
 
 const UserInteractionInfo = styled.div`
