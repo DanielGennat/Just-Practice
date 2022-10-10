@@ -72,6 +72,7 @@ const TopWrapper = styled.div`
 const UserInteractionInfo = styled.div`
   color: #caf6ff;
   padding: 30px 10px;
+  max-width: 25vw;
   background-color: rgba(10, 175, 230, 0.2);
   display: inline-block;
   margin: 50px;
