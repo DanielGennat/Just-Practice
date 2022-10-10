@@ -40,7 +40,6 @@ export default function EditTimerChainForm({
   setCountdownKey,
 }) {
   const [newTimerChain, setNewTimerChain] = useState(timerChain);
-  console.log(newTimerChain);
 
   const timeOptions = [];
   for (let i = 0; i <= 59; i++) {
