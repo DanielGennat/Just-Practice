@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
+import add from '../../public/add-button.svg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   if (event.target.id === 'seconds') {
@@ -23,6 +24,11 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
       })
     );
   }
+}
+
+export function handleAdd(newTimerChain, setNewTimerChain) {
+  const addId = newTimerChain.length + 1;
+  setNewTimerChain([...newTimerChain, { id: addId, minutes: 5, seconds: 0 }]);
 }
 
 export default function EditTimerChainForm({
@@ -106,6 +112,14 @@ export default function EditTimerChainForm({
           </Li>
         ))}
       </FormList>
+      <ButtonWrapper>
+        <Add
+          type="button"
+          onClick={() => handleAdd(newTimerChain, setNewTimerChain)}
+        >
+          <Image alt="add" src={add} width="64" height="64" />
+        </Add>
+      </ButtonWrapper>
       <Apply type="submit">
         <Image alt="hook" src={hook} width="42" height={41.71} />
         <div>Restart</div>
@@ -155,6 +169,20 @@ const Label = styled.label`
   font-weight: 300;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Add = styled.button`
+  background-color: transparent;
+  border: none;
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
 const Apply = styled.button`
   color: #caf6ff;
   font-size: 2rem;
@@ -166,8 +194,13 @@ const Apply = styled.button`
   border: none;
   border-radius: 5px;
   position: absolute;
+  margin: 10px 0 0 0;
   right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:active {
+    transform: translateY(1px);
+  }
 `;

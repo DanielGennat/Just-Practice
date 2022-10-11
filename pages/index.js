@@ -48,9 +48,6 @@ export default function Home() {
           setCountdownKey={setCountdownKey}
         />
       </TopWrapper>
-      <UserInteractionInfo>
-        Click anywhere to activate acoustic notification
-      </UserInteractionInfo>
       <FormHeadline />
       <EditTimerChainForm
         timerChain={timerChain}
@@ -60,6 +57,9 @@ export default function Home() {
         countdownKey={countdownKey}
         setCountdownKey={setCountdownKey}
       />
+      <UserInteractionInfo>
+        Click anywhere to activate acoustic notification
+      </UserInteractionInfo>
     </>
   );
 }
@@ -72,11 +72,12 @@ const TopWrapper = styled.div`
 const UserInteractionInfo = styled.div`
   color: #caf6ff;
   padding: 30px 10px;
+  max-width: 25vw;
   background-color: rgba(10, 175, 230, 0.2);
-  display: inline-block;
-  margin: 50px;
+  display: flex;
+  margin: 5vh 5vw;
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
   left: 0px;
   bottom: 0px;
 `;
