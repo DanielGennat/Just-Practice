@@ -4,6 +4,7 @@ import TimerBackgroundImage from '../components/TimerComponents/TimerBackgroundI
 import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export function handleSubmit(
   event,
@@ -20,12 +21,16 @@ export function handleSubmit(
 }
 
 export default function Home() {
-  const [timerChain, setTimerChain] = useState([
+  const initialChain = [
     { id: 1, minutes: 0, seconds: 30 },
     { id: 2, minutes: 1, seconds: 10 },
     { id: 3, minutes: 1, seconds: 2 },
     { id: 4, minutes: 1, seconds: 40 },
-  ]);
+  ];
+  const [timerChain, setTimerChain] = useLocalStorage(
+    '_timerChainStorage',
+    initialChain
+  );
   const [timerPointer, setTimerPointer] = useState(0);
   const [countdownKey, setCountdownKey] = useState(0);
 
@@ -35,6 +40,14 @@ export default function Home() {
   ) {
     setTimerPointer(timerPointer + 1);
   }
+
+  // useEffect(() => {
+  //   localStorage.setItem('_timerChainStorage', JSON.stringify(timerChain));
+  // }, [timerChain]);
+
+  // function loadFromLocal() {
+  //   return JSON.parse(localStorage.getItem('_timerChainStorage'));
+  // }
 
   return (
     <>
