@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
 import add from '../../public/add-button.svg';
+import remove from '../../public/delete-button.svg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   if (event.target.id === 'seconds') {
@@ -29,6 +30,26 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
 export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
   setNewTimerChain([...newTimerChain, { id: addId, minutes: 5, seconds: 0 }]);
+}
+
+// export function handleRemove(newTimerChain, setNewTimerChain) {
+//   const lastId = newTimerChain.length;
+//   setNewTimerChain(
+//     newTimerChain.map((timer) => {
+//       if (timer.id !== lastId) {
+//         console.log(timer);
+//         return timer;
+//       }
+//     })
+//   );
+//   console.log(newTimerChain);
+// }
+
+export function handleRemove(newTimerChain, setNewTimerChain) {
+  const lastId = newTimerChain.length;
+  const newChain = newTimerChain.filter((timer) => timer.id !== lastId);
+  setNewTimerChain(newChain);
+  console.log(newTimerChain);
 }
 
 export default function EditTimerChainForm({
@@ -113,12 +134,18 @@ export default function EditTimerChainForm({
         ))}
       </FormList>
       <ButtonWrapper>
-        <Add
+        <FormButtons
           type="button"
           onClick={() => handleAdd(newTimerChain, setNewTimerChain)}
         >
           <Image alt="add" src={add} width="64" height="64" />
-        </Add>
+        </FormButtons>
+        <FormButtons
+          type="button"
+          onClick={() => handleRemove(newTimerChain, setNewTimerChain)}
+        >
+          <Image alt="remove" src={remove} width="64" height="64" />
+        </FormButtons>
       </ButtonWrapper>
       <Apply type="submit">
         <Image alt="hook" src={hook} width="42" height={41.71} />
@@ -174,7 +201,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-const Add = styled.button`
+const FormButtons = styled.button`
   background-color: transparent;
   border: none;
 
