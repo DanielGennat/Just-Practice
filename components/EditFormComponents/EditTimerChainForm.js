@@ -32,24 +32,10 @@ export function handleAdd(newTimerChain, setNewTimerChain) {
   setNewTimerChain([...newTimerChain, { id: addId, minutes: 5, seconds: 0 }]);
 }
 
-// export function handleRemove(newTimerChain, setNewTimerChain) {
-//   const lastId = newTimerChain.length;
-//   setNewTimerChain(
-//     newTimerChain.map((timer) => {
-//       if (timer.id !== lastId) {
-//         console.log(timer);
-//         return timer;
-//       }
-//     })
-//   );
-//   console.log(newTimerChain);
-// }
-
 export function handleRemove(newTimerChain, setNewTimerChain) {
   const lastId = newTimerChain.length;
   const newChain = newTimerChain.filter((timer) => timer.id !== lastId);
   setNewTimerChain(newChain);
-  console.log(newTimerChain);
 }
 
 export default function EditTimerChainForm({
