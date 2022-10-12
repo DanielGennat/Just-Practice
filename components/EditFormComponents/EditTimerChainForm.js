@@ -75,10 +75,12 @@ export default function EditTimerChainForm({
           <Li key={newTimer.id}>
             <InputAndLabelWrapper>
               <ExerciseName
+                id="name"
                 type="text"
                 defaultValue={newTimer.name}
                 placeholder={`Exercise ${newTimer.id}`}
               />
+              <Label htmlFor="name"> Exercise</Label>
             </InputAndLabelWrapper>
             <InputAndLabelWrapper>
               <Select
@@ -181,7 +183,6 @@ const InputAndLabelWrapper = styled.div`
 
 const ExerciseName = styled.input`
   background-color: #edffdf;
-  //width: 50px;
   margin: 0 1px;
   border-radius: 5px;
   border: none;
@@ -199,6 +200,7 @@ const Select = styled.select`
 const Label = styled.label`
   color: #caf6ff;
   font-weight: 300;
+  font-size: 0.8rem;
 `;
 
 const ButtonWrapper = styled.div`
