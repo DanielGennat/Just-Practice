@@ -40,11 +40,6 @@ const Li = styled.li`
       : 'none'};
   margin: ${(props) => (props.highlight ? '5px' : '0')};
 `;
-/* background: ${(props) => (props.highlight ? radial-gradient(
-    circle,
-    transparent 30%,
-    rgba(10, 175, 230, 0.15) 50%,
-    transparent 72%) : none)}; */
 
 const Number = styled.p`
   width: 30px;
