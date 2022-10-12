@@ -49,8 +49,10 @@ export function handleAdd(newTimerChain, setNewTimerChain) {
 
 export function handleRemove(newTimerChain, setNewTimerChain) {
   const lastId = newTimerChain.length;
-  const newChain = newTimerChain.filter((timer) => timer.id !== lastId);
-  setNewTimerChain(newChain);
+  if (lastId > 1) {
+    const newChain = newTimerChain.filter((timer) => timer.id !== lastId);
+    setNewTimerChain(newChain);
+  }
 }
 
 export default function EditTimerChainForm({
