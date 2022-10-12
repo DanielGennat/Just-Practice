@@ -6,7 +6,16 @@ import add from '../../public/add-button.svg';
 import remove from '../../public/delete-button.svg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
-  if (event.target.id === 'seconds') {
+  if (event.target.id === 'name') {
+    setNewTimerChain(
+      newTimerChain.map((newTimer) => {
+        if (newTimer.id === id) {
+          return { ...newTimer, name: event.target.value };
+        }
+        return newTimer;
+      })
+    );
+  } else if (event.target.id === 'seconds') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
@@ -77,8 +86,16 @@ export default function EditTimerChainForm({
               <ExerciseName
                 id="name"
                 type="text"
-                defaultValue={newTimer.name}
+                value={newTimer.name}
                 placeholder={`Exercise ${newTimer.id}`}
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
               />
               <Label htmlFor="name"> Exercise</Label>
             </InputAndLabelWrapper>
