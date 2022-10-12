@@ -74,6 +74,13 @@ export default function EditTimerChainForm({
         {newTimerChain.map((newTimer) => (
           <Li key={newTimer.id}>
             <InputAndLabelWrapper>
+              <ExerciseName
+                type="text"
+                defaultValue={newTimer.name}
+                placeholder={`Exercise ${newTimer.id}`}
+              />
+            </InputAndLabelWrapper>
+            <InputAndLabelWrapper>
               <Select
                 id="minutes"
                 value={newTimer.minutes}
@@ -170,6 +177,14 @@ const InputAndLabelWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const ExerciseName = styled.input`
+  background-color: #edffdf;
+  //width: 50px;
+  margin: 0 1px;
+  border-radius: 5px;
+  border: none;
 `;
 
 const Select = styled.select`
