@@ -62,8 +62,8 @@ export default function CountdownCircleTimerFunction({
 const TimerWrapper = styled.div`
   background: radial-gradient(
     circle,
-    transparent 30%,
-    rgba(10, 175, 230, 0.15) 50%,
+    transparent 35%,
+    rgba(10, 175, 230, 0.19) 61%,
     transparent 72%
   );
   padding: 2vh;

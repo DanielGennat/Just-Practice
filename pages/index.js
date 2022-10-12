@@ -5,6 +5,7 @@ import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 import useLocalStorage from '../hooks/useLocalStorage';
+import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseList';
 
 export function handleSubmit(
   event,
@@ -22,10 +23,10 @@ export function handleSubmit(
 
 export default function Home() {
   const initialChain = [
-    { id: 1, minutes: 0, seconds: 30 },
-    { id: 2, minutes: 1, seconds: 10 },
-    { id: 3, minutes: 1, seconds: 2 },
-    { id: 4, minutes: 1, seconds: 40 },
+    { id: 1, minutes: 0, seconds: 30, name: 'Exercise 1' },
+    { id: 2, minutes: 1, seconds: 10, name: 'practice sth. else' },
+    { id: 3, minutes: 1, seconds: 2, name: 'a minor arpeggio' },
+    { id: 4, minutes: 1, seconds: 40, name: 'my favorite song' },
   ];
   const [timerChain, setTimerChain] = useLocalStorage(
     '_timerChainStorage',
@@ -56,6 +57,10 @@ export default function Home() {
           setCountdownKey={setCountdownKey}
         />
       </TopWrapper>
+      <DisplayExerciseList
+        timerChain={timerChain}
+        timerPointer={timerPointer}
+      />
       <FormHeadline />
       <EditTimerChainForm
         timerChain={timerChain}

@@ -6,7 +6,19 @@ import add from '../../public/add-button.svg';
 import remove from '../../public/delete-button.svg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
-  if (event.target.id === 'seconds') {
+  if (event.target.id === 'name') {
+    setNewTimerChain(
+      newTimerChain.map((newTimer) => {
+        if (newTimer.id === id) {
+          return {
+            ...newTimer,
+            name: event.target.value,
+          };
+        }
+        return newTimer;
+      })
+    );
+  } else if (event.target.id === 'seconds') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
@@ -29,7 +41,10 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
 
 export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
-  setNewTimerChain([...newTimerChain, { id: addId, minutes: 5, seconds: 0 }]);
+  setNewTimerChain([
+    ...newTimerChain,
+    { id: addId, minutes: 5, seconds: 0, name: '' },
+  ]);
 }
 
 export function handleRemove(newTimerChain, setNewTimerChain) {
@@ -73,6 +88,23 @@ export default function EditTimerChainForm({
       <FormList>
         {newTimerChain.map((newTimer) => (
           <Li key={newTimer.id}>
+            <InputAndLabelWrapper>
+              <ExerciseName
+                id="name"
+                type="text"
+                value={newTimer.name}
+                placeholder={`Exercise ${newTimer.id}`}
+                onChange={(event) =>
+                  changeTimerChain(
+                    event,
+                    newTimer.id,
+                    newTimerChain,
+                    setNewTimerChain
+                  )
+                }
+              />
+              <Label htmlFor="name"> Exercise</Label>
+            </InputAndLabelWrapper>
             <InputAndLabelWrapper>
               <Select
                 id="minutes"
@@ -172,6 +204,15 @@ const InputAndLabelWrapper = styled.div`
   align-items: center;
 `;
 
+const ExerciseName = styled.input`
+  background-color: #edffdf;
+  margin: 0 1px;
+  border-radius: 5px;
+  border: none;
+  width: 30vw;
+  max-width: 340px;
+`;
+
 const Select = styled.select`
   text-align: right;
   background-color: #edffdf;
@@ -184,6 +225,7 @@ const Select = styled.select`
 const Label = styled.label`
   color: #caf6ff;
   font-weight: 300;
+  font-size: 0.8rem;
 `;
 
 const ButtonWrapper = styled.div`
