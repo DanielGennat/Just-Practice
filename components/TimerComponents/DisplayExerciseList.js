@@ -4,7 +4,7 @@ export default function DisplayExerciseList({ timerChain, timerPointer }) {
   return (
     <ExerciseList>
       {timerChain.map((timer) => (
-        <Li highlight={timer.id === timerPointer + 1}>
+        <Li highlight={timer.id === timerPointer + 1} key={timer.id}>
           <Number>{timer.id < 10 ? `0${timer.id}` : timer.id}</Number>
           <Exercise>
             {timer.name == '' ? `Exercise ${timer.id}` : timer.name}
@@ -30,9 +30,21 @@ const ExerciseList = styled.ul`
 const Li = styled.li`
   display: flex;
   gap: 2px;
-  background-color: rgba(52, 108, 61, 0.7);
+  color: ${(props) => (props.highlight ? 'black' : '#caf6ff')};
+  background-color: ${(props) =>
+    props.highlight ? '#49F6EC' : 'rgba(10, 175, 230, 0.2)'};
   border-radius: 15px;
+  box-shadow: ${(props) =>
+    props.highlight
+      ? '0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2)'
+      : 'none'};
+  margin: ${(props) => (props.highlight ? '5px' : '0')};
 `;
+/* background: ${(props) => (props.highlight ? radial-gradient(
+    circle,
+    transparent 30%,
+    rgba(10, 175, 230, 0.15) 50%,
+    transparent 72%) : none)}; */
 
 const Number = styled.p`
   width: 30px;
