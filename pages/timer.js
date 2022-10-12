@@ -42,9 +42,6 @@ export default function TimerPage() {
     setTimerPointer(timerPointer + 1);
   }
 
-  console.log(timerChain);
-  console.log(timerPointer);
-
   return (
     <>
       <TimerBackgroundImage />
