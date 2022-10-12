@@ -56,4 +56,7 @@ const Start = styled.a`
   border-radius: 5px;
   text-align: center;
   width: 130px;
+
+  &:active {
+    transform: translateY(1px);
 `;
