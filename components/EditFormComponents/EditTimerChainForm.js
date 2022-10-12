@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import hook from '../../public/hook.svg';
 import add from '../../public/add-button.svg';
@@ -47,6 +47,10 @@ export default function EditTimerChainForm({
   setCountdownKey,
 }) {
   const [newTimerChain, setNewTimerChain] = useState(timerChain);
+
+  useEffect(() => {
+    setNewTimerChain(timerChain);
+  }, [timerChain]);
 
   const timeOptions = [];
   for (let i = 0; i <= 59; i++) {
