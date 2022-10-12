@@ -5,6 +5,7 @@ import FormHeadline from '../components/EditFormComponents/FormHeadline.js';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
 import useLocalStorage from '../hooks/useLocalStorage';
+import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseList';
 
 export function handleSubmit(
   event,
@@ -56,6 +57,10 @@ export default function Home() {
           setCountdownKey={setCountdownKey}
         />
       </TopWrapper>
+      <DisplayExerciseList
+        timerChain={timerChain}
+        timerPointer={timerPointer}
+      />
       <FormHeadline />
       <EditTimerChainForm
         timerChain={timerChain}

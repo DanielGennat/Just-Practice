@@ -10,7 +10,10 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
-          return { ...newTimer, name: event.target.value };
+          return {
+            ...newTimer,
+            name: event.target.value,
+          };
         }
         return newTimer;
       })
@@ -38,7 +41,10 @@ export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
 
 export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
-  setNewTimerChain([...newTimerChain, { id: addId, minutes: 5, seconds: 0 }]);
+  setNewTimerChain([
+    ...newTimerChain,
+    { id: addId, minutes: 5, seconds: 0, name: '' },
+  ]);
 }
 
 export function handleRemove(newTimerChain, setNewTimerChain) {
@@ -203,6 +209,8 @@ const ExerciseName = styled.input`
   margin: 0 1px;
   border-radius: 5px;
   border: none;
+  width: 30vw;
+  max-width: 340px;
 `;
 
 const Select = styled.select`
