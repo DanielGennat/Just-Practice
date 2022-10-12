@@ -35,19 +35,14 @@ export default function Home() {
   const [countdownKey, setCountdownKey] = useState(0);
 
   if (
-    (timerPointer + 1 < timerChain.length) &
-    (timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1)
+    timerPointer + 1 < timerChain.length &&
+    timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1
   ) {
     setTimerPointer(timerPointer + 1);
   }
 
-  // useEffect(() => {
-  //   localStorage.setItem('_timerChainStorage', JSON.stringify(timerChain));
-  // }, [timerChain]);
-
-  // function loadFromLocal() {
-  //   return JSON.parse(localStorage.getItem('_timerChainStorage'));
-  // }
+  console.log(timerChain);
+  console.log(timerPointer);
 
   return (
     <>
