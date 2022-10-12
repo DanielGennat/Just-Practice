@@ -31,8 +31,9 @@ const Li = styled.li`
   display: flex;
   gap: 2px;
   color: ${(props) => (props.highlight ? 'black' : '#caf6ff')};
+  text-shadow: 1px 1px 3px #000000;
   background-color: ${(props) =>
-    props.highlight ? '#49F6EC' : 'rgba(10, 175, 230, 0.2)'};
+    props.highlight ? '#49F6EC' : 'rgba(38, 52, 64, 0.3)'};
   border-radius: 15px;
   box-shadow: ${(props) =>
     props.highlight
