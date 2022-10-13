@@ -6,6 +6,7 @@ import add from '../public/add-button.svg';
 import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export function handleSubmit(
   event,
@@ -79,11 +80,14 @@ export default function EditTimerChainForm({
   countdownKey,
   setCountdownKey,
 }) {
-  const [newTimerChain, setNewTimerChain] = useState(timerChain);
+  const [newTimerChain, setNewTimerChain] = useLocalStorage(
+    '_timerChainStorage',
+    timerChain
+  );
 
-  useEffect(() => {
-    setNewTimerChain(timerChain);
-  }, [timerChain]);
+  // useEffect(() => {
+  //   setNewTimerChain(timerChain);
+  // }, [timerChain]);
 
   const timeOptions = [];
   for (let i = 0; i <= 59; i++) {
