@@ -5,6 +5,7 @@ import hook from '../public/hook.svg';
 import add from '../public/add-button.svg';
 import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
+import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
 
 export function handleSubmit(
   event,
@@ -91,6 +92,7 @@ export default function EditTimerChainForm({
 
   return (
     <>
+      <EditBackgroundImage />
       <FormHeadline />
       <form
         onSubmit={(event) =>
