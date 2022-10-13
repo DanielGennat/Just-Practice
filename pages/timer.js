@@ -95,9 +95,8 @@ const TopWrapper = styled.div`
 
 const UserInteractionInfo = styled.div`
   color: #caf6ff;
-  text-shadow: 3px 3px 5px #000000;
+  text-shadow: 2px 2px 5px #000000;
   padding: 30px 10px;
-  //max-width: 50vw;
   background-color: rgba(10, 175, 230, 0.2);
   display: flex;
   margin: 5vh 5vw;
