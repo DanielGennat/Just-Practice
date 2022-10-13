@@ -50,11 +50,11 @@ export default function TimerPage({
   //   setTimerPointer(timerPointer + 1);
   // }
 
-  if (timerChain.length === 0) {
-    useEffect(() => {
-      setNewTimerChain(initialChain);
-    }, [timerChain]);
-  }
+  // if (timerChain.length === 0) {
+  //   useEffect(() => {
+  //     setNewTimerChain(initialChain);
+  //   }, [timerChain]);
+  // }
 
   console.log(timerChain, 'timer page');
   return (

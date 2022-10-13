@@ -264,7 +264,7 @@ const AddButton = styled.button`
     background: radial-gradient(
       circle,
       rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.6) 63%,
+      rgba(85, 255, 5, 0.8) 55%,
       transparent 72%
     );
   }
@@ -282,7 +282,7 @@ const DeleteButton = styled.button`
     background: radial-gradient(
       circle,
       rgba(255, 58, 0, 0.1),
-      rgba(255, 58, 0, 0.6) 63%,
+      rgba(255, 58, 0, 0.8) 55%,
       transparent 72%
     );
   }

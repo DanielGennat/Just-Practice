@@ -21,5 +21,5 @@ const ImageWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   z-index: -1;
-  background-color: black;
+  background-color: #161616;
 `;

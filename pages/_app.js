@@ -32,7 +32,8 @@ function MyApp({ Component, pageProps }) {
         initialChain={initialChain}
         timerChain={timerChain}
         setTimerChain={setTimerChain}
-        timerPointer={setTimerPointer}
+        timerPointer={timerPointer}
+        setTimerPointer={setTimerPointer}
         countdownKey={countdownKey}
         setCountdownKey={setCountdownKey}
       />
