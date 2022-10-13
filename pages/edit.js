@@ -97,7 +97,10 @@ export default function EditTimerChainForm({
   return (
     <>
       <EditBackgroundImage />
-      <FormHeadline />
+      <HeadlineWrapper>
+        <FormHeadline />
+      </HeadlineWrapper>
+      <TopGap />
       <form
         onSubmit={(event) =>
           handleSubmit(
@@ -203,11 +206,21 @@ export default function EditTimerChainForm({
   );
 }
 
+const HeadlineWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(10px);
+`;
+
+const TopGap = styled.div`
+  height: 75px;
+`;
+
 const FormList = styled.ol`
   background-color: rgba(52, 108, 61, 0.7);
   margin: 5px 10vw;
   border-radius: 5px;
-  padding: 5px;
+  padding: 15px 0;
   list-style-type: none;
   counter-reset: li;
 `;
@@ -307,16 +320,18 @@ const Apply = styled.button`
   border-radius: 5px;
   position: absolute;
   margin: 10px 0 0 0;
-  right: 10px;
+  right: 15vw;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    box-shadow: 0 0 20px rgba(52, 108, 61, 1), 0 0 20px rgba(52, 108, 61, 0.2);
+    box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
+    background-color: rgba(52, 108, 61, 0.9);
   }
   &:active {
     transform: translateY(1px);
-    box-shadow: 0 0 20px rgba(52, 108, 61, 1), 0 0 20px rgba(52, 108, 61, 0.2);
+    box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
+    background-color: rgba(52, 108, 61, 0.9);
   }
 `;
