@@ -59,7 +59,7 @@ const Number = styled.p`
 
 const Exercise = styled.p`
   width: ${(props) => (props.highlight ? '60vw' : '40vw')};
-  max-width: 340px;
+  max-width: ${(props) => (props.highlight ? '510px' : '340px')};
   margin: 5px;
 `;
 
