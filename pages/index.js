@@ -13,14 +13,14 @@ export default function Home() {
         <H2>save time</H2>
         <H1>Just Practice</H1>
       </HeadlinesWrapper>
-      <Navbar>
+      <Nav>
         <Link href="/timer">
           <Start>Start!</Start>
         </Link>
         <Link href="/edit">
-          <Image alt="remove" src={edit} width="64" height="64" />
+          <Image alt="edit" src={edit} width="64" height="64" />
         </Link>
-      </Navbar>
+      </Nav>
     </>
   );
 }
@@ -49,9 +49,11 @@ const H1 = styled.h1`
   margin: 25px 0;
 `;
 
-const Navbar = styled.div`
+const Nav = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
 `;
 
 const Start = styled.a`

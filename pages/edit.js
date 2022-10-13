@@ -8,20 +8,25 @@ import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export function handleSubmit(
-  event,
-  newTimerChain,
-  setTimerChain,
-  setTimerPointer,
-  countdownKey,
-  setCountdownKey
-) {
-  event.preventDefault();
-  setTimerChain(newTimerChain);
-  setTimerPointer(0);
-  setCountdownKey(countdownKey + 1);
-}
+// export function handleSubmit(
+//   event,
+//   newTimerChain,
+//   setTimerChain,
+//   setTimerPointer,
+//   countdownKey,
+//   setCountdownKey
+//   // href
+// ) {
+//   event.preventDefault();
+//   setTimerChain(newTimerChain);
+//   setTimerPointer(0);
+//   setCountdownKey(countdownKey + 1);
+//   console.log('bla');
+//   // const router = useRouter();
+//   // router.push(href);
+// }
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   if (event.target.id === 'name') {
@@ -77,7 +82,7 @@ export default function EditTimerChainForm({
   timerChain,
   setTimerChain,
   setTimerPointer,
-  handleSubmit,
+  // handleSubmit,
   countdownKey,
   setCountdownKey,
 }) {
@@ -95,6 +100,29 @@ export default function EditTimerChainForm({
     timeOptions.push(i);
   }
 
+  const router = useRouter();
+
+  function handleSubmit(
+    event,
+    newTimerChain,
+    setTimerChain,
+    setTimerPointer,
+    countdownKey,
+    setCountdownKey
+    // href
+  ) {
+    event.preventDefault();
+    setTimerChain(newTimerChain);
+    setTimerPointer(0);
+    setCountdownKey(countdownKey + 1);
+    console.log('bla');
+    // const router = useRouter();
+    router.push('/timer');
+    //useRouter('/timer');
+  }
+
+  // const href = '/timer';
+
   return (
     <>
       <EditBackgroundImage />
@@ -103,7 +131,7 @@ export default function EditTimerChainForm({
       </HeadlineWrapper>
       <TopGap />
       <form
-        onSubmit={(event) =>
+        onSubmit={(event) => {
           handleSubmit(
             event,
             newTimerChain,
@@ -111,8 +139,9 @@ export default function EditTimerChainForm({
             setTimerPointer,
             countdownKey,
             setCountdownKey
-          )
-        }
+            // href
+          );
+        }}
       >
         <FormList>
           {newTimerChain.map((newTimer) => (
@@ -198,12 +227,24 @@ export default function EditTimerChainForm({
             <Image alt="remove" src={remove} width="64" height="64" />
           </DeleteButton>
         </ButtonWrapper>
-        <Link href="/timer">
-          <Apply type="submit">
-            <Image alt="hook" src={hook} width="42" height={41.71} />
-            <div>Apply</div>
-          </Apply>
-        </Link>
+        {/* <Link href="/timer" passHref> */}
+        {/* <A> */}
+        <Apply type="submit">
+          <Image alt="hook" src={hook} width="42" height={41.71} />
+          <div>Apply</div>
+        </Apply>
+        {/* </A> */}
+        {/* </Link> */}
+        <LinkWrapper>
+          <Link href="/timer">
+            <Home>Back to timer!</Home>
+          </Link>
+        </LinkWrapper>
+        <LinkWrapper>
+          <Link href="/">
+            <Home>Home</Home>
+          </Link>
+        </LinkWrapper>
       </form>
       <DownGap />
     </>
@@ -312,6 +353,10 @@ const DeleteButton = styled.button`
   }
 `;
 
+const A = styled.a`
+  //text-decoration: none;
+`;
+
 const Apply = styled.button`
   color: #caf6ff;
   font-size: 2rem;
@@ -338,6 +383,30 @@ const Apply = styled.button`
     box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
     background-color: rgba(52, 108, 61, 0.9);
   }
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+`;
+
+const Home = styled.a`
+  background-color: rgba(10, 175, 230, 0.2);
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 130px;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
 `;
 
 const DownGap = styled.div`

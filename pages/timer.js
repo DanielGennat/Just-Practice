@@ -6,6 +6,9 @@ import CountdownCircleTimerFunction from '../components/TimerComponents/Countdow
 import EditTimerChainForm from './edit';
 import useLocalStorage from '../hooks/useLocalStorage';
 import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseList';
+import Link from 'next/link';
+import edit from '../public/edit-button.svg';
+import Image from 'next/image';
 
 // export function handleSubmit(
 //   event,
@@ -73,14 +76,16 @@ export default function TimerPage({
         timerChain={timerChain}
         timerPointer={timerPointer}
       />
-      {/* <EditTimerChainForm
-        timerChain={timerChain}
-        setTimerChain={setTimerChain}
-        setTimerPointer={setTimerPointer}
-        handleSubmit={handleSubmit}
-        countdownKey={countdownKey}
-        setCountdownKey={setCountdownKey}
-      /> */}
+      <LinkWrapper>
+        <Link href="/edit">
+          <Image alt="edit" src={edit} width="64" height="64" />
+        </Link>
+      </LinkWrapper>
+      <LinkWrapper>
+        <Link href="/">
+          <Home>Home</Home>
+        </Link>
+      </LinkWrapper>
       <UserInteractionInfo>
         Click anywhere if you don't get any acoustic notification
       </UserInteractionInfo>
@@ -91,6 +96,29 @@ export default function TimerPage({
 const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Home = styled.a`
+  background-color: rgba(10, 175, 230, 0.2);
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 130px;
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
 `;
 
 const UserInteractionInfo = styled.div`
