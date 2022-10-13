@@ -1,4 +1,4 @@
-import { handleAdd } from '../components/EditFormComponents/EditTimerChainForm';
+import { handleAdd } from '../pages/edit.js';
 
 describe('newTimerChain', () => {
   test('has new timer with 5 minutes', () => {
