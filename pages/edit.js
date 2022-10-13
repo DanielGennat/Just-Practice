@@ -175,18 +175,18 @@ export default function EditTimerChainForm({
           ))}
         </FormList>
         <ButtonWrapper>
-          <FormButtons
+          <AddButton
             type="button"
             onClick={() => handleAdd(newTimerChain, setNewTimerChain)}
           >
             <Image alt="add" src={add} width="64" height="64" />
-          </FormButtons>
-          <FormButtons
+          </AddButton>
+          <DeleteButton
             type="button"
             onClick={() => handleRemove(newTimerChain, setNewTimerChain)}
           >
             <Image alt="remove" src={remove} width="64" height="64" />
-          </FormButtons>
+          </DeleteButton>
         </ButtonWrapper>
         <Apply type="submit">
           <Image alt="hook" src={hook} width="42" height={41.71} />
@@ -253,10 +253,37 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-const FormButtons = styled.button`
+const AddButton = styled.button`
   background-color: transparent;
+  border-radius: 60px;
   border: none;
 
+  &:hover {
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.6) 63%,
+      transparent 72%
+    );
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
+const DeleteButton = styled.button`
+  background-color: transparent;
+  border-radius: 60px;
+  border: none;
+
+  &:hover {
+    background: radial-gradient(
+      circle,
+      rgba(255, 58, 0, 0.1),
+      rgba(255, 58, 0, 0.6) 63%,
+      transparent 72%
+    );
+  }
   &:active {
     transform: translateY(1px);
   }

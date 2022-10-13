@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import IndexBackgroundImage from '../components/IndexComponents/IndexBackgroundImage';
+import edit from '../public/edit-button.svg';
 
 export default function Home() {
   return (
@@ -14,6 +16,9 @@ export default function Home() {
       <Navbar>
         <Link href="/timer">
           <Start>Start!</Start>
+        </Link>
+        <Link href="/edit">
+          <Image alt="remove" src={edit} width="64" height="64" />
         </Link>
       </Navbar>
     </>
