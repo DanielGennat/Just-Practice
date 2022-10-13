@@ -7,6 +7,7 @@ import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
 import useLocalStorage from '../hooks/useLocalStorage';
+import Link from 'next/link';
 
 export function handleSubmit(
   event,
@@ -197,10 +198,12 @@ export default function EditTimerChainForm({
             <Image alt="remove" src={remove} width="64" height="64" />
           </DeleteButton>
         </ButtonWrapper>
-        <Apply type="submit">
-          <Image alt="hook" src={hook} width="42" height={41.71} />
-          <div>Apply</div>
-        </Apply>
+        <Link href="/timer">
+          <Apply type="submit">
+            <Image alt="hook" src={hook} width="42" height={41.71} />
+            <div>Apply</div>
+          </Apply>
+        </Link>
       </form>
       <DownGap />
     </>
