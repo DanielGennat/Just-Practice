@@ -202,6 +202,7 @@ export default function EditTimerChainForm({
           <div>Apply</div>
         </Apply>
       </form>
+      <DownGap />
     </>
   );
 }
@@ -318,9 +319,9 @@ const Apply = styled.button`
   height: 64px;
   border: none;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
   margin: 10px 0 0 0;
-  right: 15vw;
+  left: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -334,4 +335,8 @@ const Apply = styled.button`
     box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
     background-color: rgba(52, 108, 61, 0.9);
   }
+`;
+
+const DownGap = styled.div`
+  padding: 50px;
 `;
