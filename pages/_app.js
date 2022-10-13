@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         {...pageProps}
+        initialChain={initialChain}
         timerChain={timerChain}
         setTimerChain={setTimerChain}
         timerPointer={setTimerPointer}

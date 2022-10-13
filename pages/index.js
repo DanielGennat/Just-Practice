@@ -39,6 +39,7 @@ const H2 = styled.h2`
 
 const H1 = styled.h1`
   color: #caf6ff;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
   font-size: 3em;
   margin: 25px 0;
 `;
@@ -57,6 +58,11 @@ const Start = styled.a`
   text-align: center;
   width: 130px;
 
+  &:hover {
+    box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
+  }
+
   &:active {
     transform: translateY(1px);
+    box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
 `;

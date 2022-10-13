@@ -22,6 +22,7 @@ import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseLi
 // }
 
 export default function TimerPage({
+  initialChain,
   timerChain,
   setTimerChain,
   timerPointer,
@@ -48,6 +49,12 @@ export default function TimerPage({
   // ) {
   //   setTimerPointer(timerPointer + 1);
   // }
+
+  if (timerChain.length === 0) {
+    useEffect(() => {
+      setNewTimerChain(initialChain);
+    }, [timerChain]);
+  }
 
   console.log(timerChain, 'timer page');
   return (

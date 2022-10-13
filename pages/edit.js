@@ -279,7 +279,11 @@ const Apply = styled.button`
   justify-content: center;
   align-items: center;
 
+  &:hover {
+    box-shadow: 0 0 20px rgba(52, 108, 61, 1), 0 0 20px rgba(52, 108, 61, 0.2);
+  }
   &:active {
     transform: translateY(1px);
+    box-shadow: 0 0 20px rgba(52, 108, 61, 1), 0 0 20px rgba(52, 108, 61, 0.2);
   }
 `;
