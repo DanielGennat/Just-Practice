@@ -6,10 +6,10 @@ export default function DisplayExerciseList({ timerChain, timerPointer }) {
       {timerChain.map((timer) => (
         <Li highlight={timer.id === timerPointer + 1} key={timer.id}>
           <Number>{timer.id < 10 ? `0${timer.id}` : timer.id}</Number>
-          <Exercise>
+          <Exercise highlight={timer.id === timerPointer + 1}>
             {timer.name == '' ? `Exercise ${timer.id}` : timer.name}
           </Exercise>
-          <Duration>
+          <Duration highlight={timer.id === timerPointer + 1}>
             {timer.minutes}:
             {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
           </Duration>
@@ -31,6 +31,7 @@ const Li = styled.li`
   display: flex;
   gap: 2px;
   color: ${(props) => (props.highlight ? 'black' : '#caf6ff')};
+  font-size: ${(props) => (props.highlight ? '1.5rem' : '#16px')};
   //text-shadow: 1px 1px 3px #000000;
   text-shadow: ${(props) =>
     props.highlight
@@ -57,13 +58,13 @@ const Number = styled.p`
 `;
 
 const Exercise = styled.p`
-  width: 40vw;
+  width: ${(props) => (props.highlight ? '60vw' : '40vw')};
   max-width: 340px;
   margin: 5px;
 `;
 
 const Duration = styled.p`
-  width: 42px;
+  width: ${(props) => (props.highlight ? '63px' : '42px')};
   text-align: right;
   margin: 5px;
 `;
