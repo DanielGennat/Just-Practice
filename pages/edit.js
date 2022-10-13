@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import hook from '../public/hook.svg';
 import add from '../public/add-button.svg';
@@ -7,26 +6,7 @@ import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
 import useLocalStorage from '../hooks/useLocalStorage';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-// export function handleSubmit(
-//   event,
-//   newTimerChain,
-//   setTimerChain,
-//   setTimerPointer,
-//   countdownKey,
-//   setCountdownKey
-//   // href
-// ) {
-//   event.preventDefault();
-//   setTimerChain(newTimerChain);
-//   setTimerPointer(0);
-//   setCountdownKey(countdownKey + 1);
-//   console.log('bla');
-//   // const router = useRouter();
-//   // router.push(href);
-// }
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   if (event.target.id === 'name') {
@@ -82,7 +62,6 @@ export default function EditTimerChainForm({
   timerChain,
   setTimerChain,
   setTimerPointer,
-  // handleSubmit,
   countdownKey,
   setCountdownKey,
 }) {
@@ -90,10 +69,6 @@ export default function EditTimerChainForm({
     '_timerChainStorage',
     timerChain
   );
-
-  // useEffect(() => {
-  //   setNewTimerChain(timerChain);
-  // }, [timerChain]);
 
   const timeOptions = [];
   for (let i = 0; i <= 59; i++) {
@@ -109,19 +84,14 @@ export default function EditTimerChainForm({
     setTimerPointer,
     countdownKey,
     setCountdownKey
-    // href
   ) {
     event.preventDefault();
     setTimerChain(newTimerChain);
     setTimerPointer(0);
     setCountdownKey(countdownKey + 1);
     console.log('bla');
-    // const router = useRouter();
     router.push('/timer');
-    //useRouter('/timer');
   }
-
-  // const href = '/timer';
 
   return (
     <>
@@ -139,7 +109,6 @@ export default function EditTimerChainForm({
             setTimerPointer,
             countdownKey,
             setCountdownKey
-            // href
           );
         }}
       >
@@ -227,24 +196,13 @@ export default function EditTimerChainForm({
             <Image alt="remove" src={remove} width="64" height="64" />
           </DeleteButton>
         </ButtonWrapper>
-        {/* <Link href="/timer" passHref> */}
-        {/* <A> */}
-        <Apply type="submit">
-          <Image alt="hook" src={hook} width="42" height={41.71} />
-          <div>Apply</div>
-        </Apply>
-        {/* </A> */}
-        {/* </Link> */}
-        <LinkWrapper>
-          <Link href="/timer">
-            <Home>Back to timer!</Home>
-          </Link>
-        </LinkWrapper>
-        <LinkWrapper>
-          <Link href="/">
-            <Home>Home</Home>
-          </Link>
-        </LinkWrapper>
+        <ApplyWrapper>
+          <DummyDiv />
+          <Apply type="submit">
+            <Image alt="hook" src={hook} width="42" height={41.71} />
+            <div>Apply</div>
+          </Apply>
+        </ApplyWrapper>
       </form>
       <DownGap />
     </>
@@ -322,16 +280,22 @@ const AddButton = styled.button`
   border-radius: 60px;
   border: none;
 
-  &:hover {
+  /* &:hover {
     background: radial-gradient(
       circle,
       rgba(85, 255, 5, 0.1),
       rgba(85, 255, 5, 0.8) 55%,
       transparent 72%
     );
-  }
+  } */
   &:active {
     transform: translateY(1px);
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.8) 55%,
+      transparent 72%
+    );
   }
 `;
 
@@ -340,7 +304,16 @@ const DeleteButton = styled.button`
   border-radius: 60px;
   border: none;
 
-  &:hover {
+  /* &:hover {
+    background: radial-gradient(
+      circle,
+      rgba(255, 58, 0, 0.1),
+      rgba(255, 58, 0, 0.8) 55%,
+      transparent 72%
+    );
+  } */
+  &:active {
+    transform: translateY(1px);
     background: radial-gradient(
       circle,
       rgba(255, 58, 0, 0.1),
@@ -348,13 +321,16 @@ const DeleteButton = styled.button`
       transparent 72%
     );
   }
-  &:active {
-    transform: translateY(1px);
-  }
 `;
 
-const A = styled.a`
-  //text-decoration: none;
+const ApplyWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const DummyDiv = styled.div`
+  width: 35vw;
+  max-width: 167px;
 `;
 
 const Apply = styled.button`
@@ -369,7 +345,6 @@ const Apply = styled.button`
   border-radius: 5px;
   position: relative;
   margin: 10px 0 0 0;
-  left: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -383,30 +358,6 @@ const Apply = styled.button`
     box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
     background-color: rgba(52, 108, 61, 0.9);
   }
-`;
-
-const LinkWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-`;
-
-const Home = styled.a`
-  background-color: rgba(10, 175, 230, 0.2);
-  font-weight: bold;
-  font-size: 1.5rem;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  width: 130px;
-
-  &:hover {
-    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  }
-
-  &:active {
-    transform: translateY(1px);
-    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
 `;
 
 const DownGap = styled.div`

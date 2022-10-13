@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import GlobalStyle from '../components/GlobalStyles';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -17,8 +16,6 @@ function MyApp({ Component, pageProps }) {
   const [timerPointer, setTimerPointer] = useState(0);
   const [countdownKey, setCountdownKey] = useState(0);
 
-  // const router = useRouter();
-
   if (
     timerPointer + 1 < timerChain.length &&
     timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1
@@ -26,25 +23,6 @@ function MyApp({ Component, pageProps }) {
     setTimerPointer(timerPointer + 1);
   }
   console.log(timerChain, '_app');
-
-  // function handleSubmit(
-  //   event,
-  //   newTimerChain,
-  //   setTimerChain,
-  //   setTimerPointer,
-  //   countdownKey,
-  //   setCountdownKey
-  //   // href
-  // ) {
-  //   event.preventDefault();
-  //   setTimerChain(newTimerChain);
-  //   setTimerPointer(0);
-  //   setCountdownKey(countdownKey + 1);
-  //   console.log('bla');
-  //   // const router = useRouter();
-  //   router.push('/timer');
-  //   //useRouter('/timer');
-  // }
 
   return (
     <>
@@ -58,7 +36,6 @@ function MyApp({ Component, pageProps }) {
         setTimerPointer={setTimerPointer}
         countdownKey={countdownKey}
         setCountdownKey={setCountdownKey}
-        // handleSubmit={handleSubmit}
       />
     </>
   );

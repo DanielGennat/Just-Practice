@@ -13,14 +13,18 @@ export default function Home() {
         <H2>save time</H2>
         <H1>Just Practice</H1>
       </HeadlinesWrapper>
-      <Nav>
+      <StartWrapper>
         <Link href="/timer">
           <Start>Start!</Start>
         </Link>
-        <Link href="/edit">
-          <Image alt="edit" src={edit} width="64" height="64" />
-        </Link>
-      </Nav>
+      </StartWrapper>
+      <EditWrapperWrapper>
+        <EditWrapper>
+          <Link href="/edit">
+            <Image alt="edit" src={edit} width="64" height="64" />
+          </Link>
+        </EditWrapper>
+      </EditWrapperWrapper>
     </>
   );
 }
@@ -49,10 +53,9 @@ const H1 = styled.h1`
   margin: 25px 0;
 `;
 
-const Nav = styled.div`
+const StartWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: end;
   flex-direction: column;
 `;
 
@@ -72,4 +75,38 @@ const Start = styled.a`
   &:active {
     transform: translateY(1px);
     box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
+  }
+`;
+
+const EditWrapperWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+`;
+
+const EditWrapper = styled.div`
+  background-color: transparent;
+  border-radius: 60px;
+  border: none;
+  padding: 5px;
+
+  &:hover {
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.8) 35%,
+      transparent 72%
+    );
+  }
+  &:active {
+    transform: translateY(1px);
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.8) 35%,
+      transparent 72%
+    );
+  }
 `;
