@@ -37,7 +37,7 @@ export default function TimerPage({
         </EditWrapper>
       </EditWrapperWrapper>
       <UserInteractionInfo>
-        Click anywhere if you don't get any acoustic notification
+        Click anywhere if you don&apos;t get any acoustic notification
       </UserInteractionInfo>
     </>
   );
