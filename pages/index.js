@@ -23,13 +23,13 @@ export default function Home() {
           <Start>Start!</Start>
         </Link>
       </StartWrapper>
-      <EditWrapperWrapper>
+      <EditWrapperContainer>
         <EditWrapper>
           <Link href="/edit">
             <Image alt="edit" src={edit} width="64" height="64" />
           </Link>
         </EditWrapper>
-      </EditWrapperWrapper>
+      </EditWrapperContainer>
     </>
   );
 }
@@ -83,7 +83,7 @@ const Start = styled.a`
   }
 `;
 
-const EditWrapperWrapper = styled.div`
+const EditWrapperContainer = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
