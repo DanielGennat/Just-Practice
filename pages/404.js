@@ -30,7 +30,6 @@ const ImageWrapper = styled.div`
 const H1 = styled.h1`
   color: #caf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  //font-size: 1.2rem;
   padding: 50vw 20px;
   text-align: center;
 `;
