@@ -64,6 +64,7 @@ const EditWrapper = styled.div`
   border-radius: 60px;
   border: none;
   padding: 5px;
+  z-index: 1;
 
   &:hover {
     background: radial-gradient(
