@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
   ) {
     setTimerPointer(timerPointer + 1);
   }
-  console.log(timerChain, '_app');
 
   return (
     <>

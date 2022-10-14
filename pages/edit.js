@@ -8,40 +8,41 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { useRouter } from 'next/router';
 import BackgroundImage from '../components/BackgroundImage';
 import pedalsImg from '../public/pedals.jpg';
+import changeTimerChain from '../components/EditFormComponents/ChangeTimerChain';
 
-export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
-  if (event.target.id === 'exerciseName') {
-    setNewTimerChain(
-      newTimerChain.map((newTimer) => {
-        if (newTimer.id === id) {
-          return {
-            ...newTimer,
-            exerciseName: event.target.value,
-          };
-        }
-        return newTimer;
-      })
-    );
-  } else if (event.target.id === 'seconds') {
-    setNewTimerChain(
-      newTimerChain.map((newTimer) => {
-        if (newTimer.id === id) {
-          return { ...newTimer, seconds: Number(event.target.value) };
-        }
-        return newTimer;
-      })
-    );
-  } else {
-    setNewTimerChain(
-      newTimerChain.map((newTimer) => {
-        if (newTimer.id === id) {
-          return { ...newTimer, minutes: Number(event.target.value) };
-        }
-        return newTimer;
-      })
-    );
-  }
-}
+// export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
+//   if (event.target.id === 'exerciseName') {
+//     setNewTimerChain(
+//       newTimerChain.map((newTimer) => {
+//         if (newTimer.id === id) {
+//           return {
+//             ...newTimer,
+//             exerciseName: event.target.value,
+//           };
+//         }
+//         return newTimer;
+//       })
+//     );
+//   } else if (event.target.id === 'seconds') {
+//     setNewTimerChain(
+//       newTimerChain.map((newTimer) => {
+//         if (newTimer.id === id) {
+//           return { ...newTimer, seconds: Number(event.target.value) };
+//         }
+//         return newTimer;
+//       })
+//     );
+//   } else {
+//     setNewTimerChain(
+//       newTimerChain.map((newTimer) => {
+//         if (newTimer.id === id) {
+//           return { ...newTimer, minutes: Number(event.target.value) };
+//         }
+//         return newTimer;
+//       })
+//     );
+//   }
+// }
 
 export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
