@@ -57,7 +57,6 @@ export default function EditTimerChainForm({
     setTimerChain(newTimerChain);
     setTimerPointer(0);
     setCountdownKey(-1);
-    console.log('bla');
     router.push('/timer');
   }
 
@@ -72,7 +71,7 @@ export default function EditTimerChainForm({
         <FormHeadline />
       </HeadlineWrapper>
       <TopGap />
-      <form
+      <Form
         onSubmit={(event) => {
           handleSubmit(
             event,
@@ -175,8 +174,7 @@ export default function EditTimerChainForm({
             <div>Apply</div>
           </Apply>
         </ApplyWrapper>
-      </form>
-      <DownGap />
+      </Form>
     </>
   );
 }
@@ -189,6 +187,10 @@ const HeadlineWrapper = styled.div`
 
 const TopGap = styled.div`
   height: 75px;
+`;
+
+const Form = styled.form`
+  padding-bottom: 50px;
 `;
 
 const FormList = styled.ol`
@@ -330,8 +332,4 @@ const Apply = styled.button`
     box-shadow: 0 0 40px rgba(52, 250, 100, 1), 0 0 40px rgba(52, 250, 100, 0.2);
     background-color: rgba(52, 108, 61, 0.9);
   }
-`;
-
-const DownGap = styled.div`
-  padding: 50px;
 `;
