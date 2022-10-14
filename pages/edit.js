@@ -46,7 +46,7 @@ export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
   setNewTimerChain([
     ...newTimerChain,
-    { id: addId, minutes: 5, seconds: 0, name: '' },
+    { id: addId, minutes: 5, seconds: 0, exerciseName: '' },
   ]);
 }
 
