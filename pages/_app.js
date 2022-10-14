@@ -4,10 +4,10 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 function MyApp({ Component, pageProps }) {
   const initialChain = [
-    { id: 1, minutes: 0, seconds: 30, name: 'Exercise 1' },
-    { id: 2, minutes: 1, seconds: 10, name: 'practice sth. else' },
-    { id: 3, minutes: 1, seconds: 2, name: 'a minor arpeggio' },
-    { id: 4, minutes: 1, seconds: 40, name: 'my favorite song' },
+    { id: 1, minutes: 1, seconds: 30, exerciseName: 'warm up' },
+    { id: 2, minutes: 5, seconds: 0, exerciseName: 'a minor arpeggio' },
+    { id: 3, minutes: 5, seconds: 0, exerciseName: 'practice sth. else' },
+    { id: 4, minutes: 10, seconds: 0, exerciseName: 'my favorite song' },
   ];
   const [timerChain, setTimerChain] = useLocalStorage(
     '_timerChainStorage',

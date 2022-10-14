@@ -9,13 +9,13 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { useRouter } from 'next/router';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
-  if (event.target.id === 'name') {
+  if (event.target.id === 'exerciseName') {
     setNewTimerChain(
       newTimerChain.map((newTimer) => {
         if (newTimer.id === id) {
           return {
             ...newTimer,
-            name: event.target.value,
+            exerciseName: event.target.value,
           };
         }
         return newTimer;
@@ -117,9 +117,9 @@ export default function EditTimerChainForm({
             <Li key={newTimer.id}>
               <InputAndLabelWrapper>
                 <ExerciseName
-                  id="name"
+                  id="exerciseName"
                   type="text"
-                  value={newTimer.name}
+                  value={newTimer.exerciseName}
                   placeholder={`Exercise ${newTimer.id}`}
                   onChange={(event) =>
                     changeTimerChain(
@@ -130,7 +130,7 @@ export default function EditTimerChainForm({
                     )
                   }
                 />
-                <Label htmlFor="name"> Exercise</Label>
+                <Label htmlFor="exerciseName"> Exercise</Label>
               </InputAndLabelWrapper>
               <InputAndLabelWrapper>
                 <Select

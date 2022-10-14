@@ -7,7 +7,9 @@ export default function DisplayExerciseList({ timerChain, timerPointer }) {
         <Li highlight={timer.id === timerPointer + 1} key={timer.id}>
           <Number>{timer.id < 10 ? `0${timer.id}` : timer.id}</Number>
           <Exercise highlight={timer.id === timerPointer + 1}>
-            {timer.name == '' ? `Exercise ${timer.id}` : timer.name}
+            {timer.exerciseName == ''
+              ? `Exercise ${timer.id}`
+              : timer.exerciseName}
           </Exercise>
           <Duration highlight={timer.id === timerPointer + 1}>
             {timer.minutes}:
