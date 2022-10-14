@@ -34,15 +34,8 @@ const Li = styled.li`
   gap: 2px;
   color: ${(props) => (props.highlight ? 'black' : '#caf6ff')};
   font-size: ${(props) => (props.highlight ? '1.5rem' : '#16px')};
-  //text-shadow: 1px 1px 3px #000000;
   text-shadow: ${(props) =>
-    props.highlight
-      ? '1px 1px 3px #000000'
-      : // '0 -1px 3px #caf6ff, 1px 0 3px #caf6ff, 0 1px 3px #caf6ff, -1px 0 3px #caf6ff'
-        //'0 -1px 3px #3F4347, 1px 0 3px #3F4347, 0 1px 3px #3F4347, -1px 0 3px #3F4347'
-        //'0 -5px 10px #black, 5px 0 10px #black, 0 5px 10px #black, -5px 0 10px #black'};
-        //'1px 1px 3px #000000'};
-        '2px 2px 5px #000000'};
+    props.highlight ? '1px 1px 3px #000000' : '2px 2px 5px #000000'};
   background-color: ${(props) =>
     props.highlight ? '#49F6EC' : 'rgba(38, 52, 64, 0.3)'};
   border-radius: 15px;

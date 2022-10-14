@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import TimerBackgroundImage from '../components/TimerComponents/TimerBackgroundImage';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseList';
 import Link from 'next/link';
 import edit from '../public/edit-button.svg';
 import Image from 'next/image';
+import BackgroundImage from '../components/BackgroundImage';
+import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 
 export default function TimerPage({
   timerChain,
@@ -15,7 +16,11 @@ export default function TimerPage({
 }) {
   return (
     <>
-      <TimerBackgroundImage />
+      <BackgroundImage
+        image={manPlayingGuitarOnHisBackImg}
+        alt="background image man playing guitar on his back"
+        fallbackBackgroundColor="#161616"
+      />
       <TopWrapper>
         <CountdownCircleTimerFunction
           timerChain={timerChain}

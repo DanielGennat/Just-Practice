@@ -1,13 +1,18 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
-import IndexBackgroundImage from '../components/IndexComponents/IndexBackgroundImage';
+import Image from 'next/image';
+import BackgroundImage from '../components/BackgroundImage';
+import guitarOnAmplifierImg from '../public/landingImage.jpg';
 import edit from '../public/edit-button.svg';
 
 export default function Home() {
   return (
     <>
-      <IndexBackgroundImage />
+      <BackgroundImage
+        image={guitarOnAmplifierImg}
+        alt="background image guitar on amplifier"
+        fallbackBackgroundColor="#0e0f11"
+      />
       <HeadlinesWrapper>
         <H3>stay focussed</H3>
         <H2>save time</H2>

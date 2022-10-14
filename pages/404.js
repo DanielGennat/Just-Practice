@@ -1,18 +1,15 @@
-import Image from 'next/image';
 import styled from 'styled-components';
-import jackCable from '../public/jackCable.jpg';
+import BackgroundImage from '../components/BackgroundImage';
+import jackCableImg from '../public/jackCable.jpg';
 
 export default function PageNotFound() {
   return (
     <>
-      <ImageWrapper>
-        <Image
-          alt="background image jack cable"
-          src={jackCable}
-          layout="fill"
-          objectFit="cover"
-        />
-      </ImageWrapper>
+      <BackgroundImage
+        image={jackCableImg}
+        alt="background image jack cable"
+        fallbackBackgroundColor="#bf4a4a"
+      />
       <H1>404 | This page could not be found. </H1>
     </>
   );
@@ -24,12 +21,11 @@ const ImageWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   z-index: -1;
-  background-color: #bf4a4a;
 `;
 
 const H1 = styled.h1`
   color: #caf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  padding: 50vw 20px;
+  padding: 20vh 20px 0 20px;
   text-align: center;
 `;

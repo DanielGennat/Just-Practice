@@ -4,9 +4,10 @@ import hook from '../public/hook.svg';
 import add from '../public/add-button.svg';
 import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
-import EditBackgroundImage from '../components/EditFormComponents/EditBackgroundImage';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useRouter } from 'next/router';
+import BackgroundImage from '../components/BackgroundImage';
+import pedalsImg from '../public/pedals.jpg';
 
 export function changeTimerChain(event, id, newTimerChain, setNewTimerChain) {
   if (event.target.id === 'exerciseName') {
@@ -95,7 +96,11 @@ export default function EditTimerChainForm({
 
   return (
     <>
-      <EditBackgroundImage />
+      <BackgroundImage
+        image={pedalsImg}
+        alt="background image pedals"
+        fallbackBackgroundColor="#545378"
+      />
       <HeadlineWrapper>
         <FormHeadline />
       </HeadlineWrapper>
