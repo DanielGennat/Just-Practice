@@ -88,7 +88,7 @@ export default function EditTimerChainForm({
     event.preventDefault();
     setTimerChain(newTimerChain);
     setTimerPointer(0);
-    setCountdownKey(countdownKey + 1);
+    setCountdownKey(-1);
     console.log('bla');
     router.push('/timer');
   }
