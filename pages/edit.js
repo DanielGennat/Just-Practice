@@ -30,7 +30,6 @@ export default function EditTimerChainForm({
   timerChain,
   setTimerChain,
   setTimerPointer,
-  countdownKey,
   setCountdownKey,
 }) {
   const [newTimerChain, setNewTimerChain] = useLocalStorage(
@@ -45,14 +44,7 @@ export default function EditTimerChainForm({
 
   const router = useRouter();
 
-  function handleSubmit(
-    event,
-    newTimerChain,
-    setTimerChain,
-    setTimerPointer,
-    countdownKey,
-    setCountdownKey
-  ) {
+  function handleSubmit(event) {
     event.preventDefault();
     setTimerChain(newTimerChain);
     setTimerPointer(0);
@@ -73,14 +65,7 @@ export default function EditTimerChainForm({
       <TopGap />
       <Form
         onSubmit={(event) => {
-          handleSubmit(
-            event,
-            newTimerChain,
-            setTimerChain,
-            setTimerPointer,
-            countdownKey,
-            setCountdownKey
-          );
+          handleSubmit(event);
         }}
       >
         <FormList>
