@@ -18,18 +18,14 @@ export default function Home() {
         <H2>save time</H2>
         <H1>Just Practice</H1>
       </HeadlinesWrapper>
-      <StartWrapper>
-        <Link href="/timer">
-          <Start>Start!</Start>
+      <Link href="/timer">
+        <Start>Start!</Start>
+      </Link>
+      <EditWrapper>
+        <Link href="/edit">
+          <Image alt="edit" src={edit} width="64" height="64" />
         </Link>
-      </StartWrapper>
-      <EditWrapperContainer>
-        <EditWrapper>
-          <Link href="/edit">
-            <Image alt="edit" src={edit} width="64" height="64" />
-          </Link>
-        </EditWrapper>
-      </EditWrapperContainer>
+      </EditWrapper>
     </>
   );
 }
@@ -58,12 +54,6 @@ const H1 = styled.h1`
   margin: 25px 0;
 `;
 
-const StartWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
 const Start = styled.a`
   background-color: #ff3a00;
   font-weight: bold;
@@ -72,6 +62,9 @@ const Start = styled.a`
   border-radius: 5px;
   text-align: center;
   width: 130px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 
   &:hover {
     box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
@@ -83,19 +76,15 @@ const Start = styled.a`
   }
 `;
 
-const EditWrapperContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 50px;
-  width: 100%;
-`;
-
 const EditWrapper = styled.div`
   background-color: transparent;
   border-radius: 60px;
   border: none;
   padding: 5px;
+  bottom: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 
   &:hover {
     background: radial-gradient(
