@@ -34,13 +34,13 @@ export default function TimerPage({
         timerChain={timerChain}
         timerPointer={timerPointer}
       />
-      <EditWrapperWrapper>
+      <EditWrapperContainer>
         <EditWrapper>
           <Link href="/edit">
             <Image alt="edit" src={edit} width="64" height="64" />
           </Link>
         </EditWrapper>
-      </EditWrapperWrapper>
+      </EditWrapperContainer>
       <UserInteractionInfo>
         Click anywhere if you don&apos;t get any acoustic notification
       </UserInteractionInfo>
@@ -52,7 +52,7 @@ const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-const EditWrapperWrapper = styled.div`
+const EditWrapperContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
