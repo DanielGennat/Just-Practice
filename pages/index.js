@@ -71,7 +71,7 @@ const Start = styled.a`
   }
 
   &:active {
-    transform: translateY(1px);
+    transform: translate(-50% 1px);
     box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
   }
 `;
@@ -95,7 +95,7 @@ const EditWrapper = styled.div`
     );
   }
   &:active {
-    transform: translateY(1px);
+    transform: translate(-50% 1px);
     background: radial-gradient(
       circle,
       rgba(85, 255, 5, 0.1),

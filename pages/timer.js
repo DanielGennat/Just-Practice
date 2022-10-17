@@ -34,13 +34,11 @@ export default function TimerPage({
         timerChain={timerChain}
         timerPointer={timerPointer}
       />
-      <EditWrapperContainer>
-        <EditWrapper>
-          <Link href="/edit">
-            <Image alt="edit" src={edit} width="64" height="64" />
-          </Link>
-        </EditWrapper>
-      </EditWrapperContainer>
+      <EditWrapper>
+        <Link href="/edit">
+          <Image alt="edit" src={edit} width="64" height="64" />
+        </Link>
+      </EditWrapper>
       <UserInteractionInfo>
         Click anywhere if you don&apos;t get any acoustic notification
       </UserInteractionInfo>
@@ -49,10 +47,6 @@ export default function TimerPage({
 }
 
 const TopWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const EditWrapperContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -65,6 +59,9 @@ const EditWrapper = styled.div`
   border: none;
   padding: 5px;
   z-index: 1;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 
   &:hover {
     background: radial-gradient(
@@ -75,7 +72,7 @@ const EditWrapper = styled.div`
     );
   }
   &:active {
-    transform: translateY(1px);
+    transform: translate(-50% 1px);
     background: radial-gradient(
       circle,
       rgba(85, 255, 5, 0.1),
