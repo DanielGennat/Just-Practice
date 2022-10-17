@@ -15,14 +15,6 @@ export default function PageNotFound() {
   );
 }
 
-const ImageWrapper = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-`;
-
 const H1 = styled.h1`
   color: #caf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
