@@ -1,21 +1,31 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import IndexBackgroundImage from '../components/IndexComponents/IndexBackgroundImage';
+import Image from 'next/image';
+import BackgroundImage from '../components/BackgroundImage';
+import guitarOnAmplifierImg from '../public/landingImage.jpg';
+import edit from '../public/edit-button.svg';
 
 export default function Home() {
   return (
     <>
-      <IndexBackgroundImage />
+      <BackgroundImage
+        image={guitarOnAmplifierImg}
+        alt="background image guitar on amplifier"
+        fallbackBackgroundColor="#0e0f11"
+      />
       <HeadlinesWrapper>
         <H3>stay focussed</H3>
         <H2>save time</H2>
         <H1>Just Practice</H1>
       </HeadlinesWrapper>
-      <Navbar>
-        <Link href="/timer">
-          <Start>Start!</Start>
+      <Link href="/timer">
+        <Start>Start!</Start>
+      </Link>
+      <EditWrapper>
+        <Link href="/edit">
+          <Image alt="edit" src={edit} width="64" height="64" />
         </Link>
-      </Navbar>
+      </EditWrapper>
     </>
   );
 }
@@ -39,13 +49,9 @@ const H2 = styled.h2`
 
 const H1 = styled.h1`
   color: #caf6ff;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
   font-size: 3em;
   margin: 25px 0;
-`;
-
-const Navbar = styled.div`
-  display: flex;
-  justify-content: center;
 `;
 
 const Start = styled.a`
@@ -56,7 +62,45 @@ const Start = styled.a`
   border-radius: 5px;
   text-align: center;
   width: 130px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+
+  &:hover {
+    box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
+  }
 
   &:active {
-    transform: translateY(1px);
+    transform: translate(-50% 1px);
+    box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
+  }
+`;
+
+const EditWrapper = styled.div`
+  background-color: transparent;
+  border-radius: 60px;
+  border: none;
+  padding: 5px;
+  bottom: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+
+  &:hover {
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.8) 35%,
+      transparent 72%
+    );
+  }
+  &:active {
+    transform: translate(-50% 1px);
+    background: radial-gradient(
+      circle,
+      rgba(85, 255, 5, 0.1),
+      rgba(85, 255, 5, 0.8) 35%,
+      transparent 72%
+    );
+  }
 `;

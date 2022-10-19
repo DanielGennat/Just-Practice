@@ -1,4 +1,4 @@
-import EditTimerChainForm from '../components/EditFormComponents/EditTimerChainForm';
+import EditTimerChainForm from '../pages/edit.js';
 
 describe('all newTimerChain.seconds', () => {
   test('are greater than or equal 0', () => {

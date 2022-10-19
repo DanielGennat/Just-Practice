@@ -7,7 +7,7 @@ export default function FormHeadline() {
 const H2 = styled.h2`
   color: #caf6ff;
   text-align: center;
-  padding: 26px 10px;
+  padding: 15px 10px;
   background-color: rgba(52, 108, 61, 0.7);
   border-radius: 15px;
   margin: 10px;

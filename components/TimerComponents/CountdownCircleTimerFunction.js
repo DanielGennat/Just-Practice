@@ -63,7 +63,7 @@ const TimerWrapper = styled.div`
   background: radial-gradient(
     circle,
     transparent 35%,
-    rgba(10, 175, 230, 0.19) 61%,
+    rgba(10, 175, 230, 0.5) 61%,
     transparent 72%
   );
   padding: 2vh;
