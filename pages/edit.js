@@ -46,7 +46,6 @@ export default function EditTimerChainForm({
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const checkTimerChain = newTimerChain.filter(
       (timer) => Number(timer.minutes + timer.seconds) > 0
     );
