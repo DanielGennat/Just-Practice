@@ -46,10 +46,18 @@ export default function EditTimerChainForm({
 
   function handleSubmit(event) {
     event.preventDefault();
-    setTimerChain(newTimerChain);
-    setTimerPointer(0);
-    setCountdownKey(-1);
-    router.push('/timer');
+
+    const checkTimerChain = newTimerChain.filter(
+      (timer) => Number(timer.minutes + timer.seconds) > 0
+    );
+    if (checkTimerChain.length > 0) {
+      setTimerChain(newTimerChain);
+      setTimerPointer(0);
+      setCountdownKey(-1);
+      router.push('/timer');
+    } else {
+      alert('All timers are 0:00. Set at least one timer!');
+    }
   }
 
   return (
