@@ -1,19 +1,18 @@
 ![Bildschirmfoto 2022-10-20 um 16 09 01](https://user-images.githubusercontent.com/109812125/196972289-88866241-5c05-406f-a25d-84a1bc6a00f9.png)
-# Just Practice
-
-Welcome to my capstone project app "Just Practice"!
+# Welcome to my capstone project app "Just Practice"!
 
 This timer app helps you to focus on your guitar exercises and get the most out of your time.
 Customize your timer chain, repeat your training the next day and don’t waist time on setting up the next timer
 nor remembering the next exercise to  >stay focussed >> save time >>> just practice
 
+## Functions
 - plays several individual timers in succession
 - visualisation of remaining time with colour gradient from turquoise/green to red
 - acoustic notification when the timer has expired
 - name of the exercise and duration are displayed
 - highlighting of the current exercise
 
-You can customize:
+### You can customize:
 - number of exercises
 - exercise names
 - minutes
