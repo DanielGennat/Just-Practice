@@ -6,6 +6,9 @@ This timer app helps you to focus on your guitar exercises and get the most out 
 Customize your timer chain, repeat your training the next day and don’t waist time on setting up the next timer
 nor remembering the next exercise to  >stay focussed >> save time >>> just practice
 
+## Demo
+You can find the hosted version on vercel: [Just Practice](https://just-practice.vercel.app/)
+
 ## Functions
 - plays several individual timers in succession
 - visualisation of remaining time with colour gradient from turquoise/green to red
