@@ -7,8 +7,24 @@ This timer app helps you to focus on your guitar exercises and get the most out 
 Customize your timer chain, repeat your training the next day and don’t waist time on setting up the next timer
 nor remembering the next exercise to  >stay focussed >> save time >>> just practice
 
+- plays several individual timers in succession
+- visualisation of remaining time with colour gradient from turquoise/green to red
+- acoustic notification when the timer has expired
+- name of the exercise and duration are displayed
+- highlighting of the current exercise
+
+You can customize:
+- number of exercises
+- exercise names
+- minutes
+- seconds
+
 ## App Impressions
-https://user-images.githubusercontent.com/109812125/196956217-caaa110c-c4dd-4b5d-b103-5c18974c9a36.mov
+
+
+https://user-images.githubusercontent.com/109812125/196974526-e1d4fbb9-587a-47fa-b0c2-e60aa132d490.mov
+
+
 
 <img width="375" alt="Bildschirmfoto 2022-10-20 um 15 15 04" src="https://user-images.githubusercontent.com/109812125/196959893-83530d37-bec1-4f7d-8e62-89e49843cd51.png">
 <img width="375" alt="Bildschirmfoto 2022-10-20 um 15 17 31" src="https://user-images.githubusercontent.com/109812125/196959973-e13afcce-e03f-47dd-a66e-535da551ff9b.png">
