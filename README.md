@@ -1,6 +1,6 @@
 ![Bildschirmfoto 2022-10-20 um 16 09 01](https://user-images.githubusercontent.com/109812125/196972289-88866241-5c05-406f-a25d-84a1bc6a00f9.png)
 
-##Welcome to my capstone project app "Just Practice"!
+## Welcome to my capstone project app "Just Practice"!
 
 This timer app helps you to focus on your guitar exercises and get the most out of your time.
 Customize your timer chain, repeat your training the next day and don’t waist time on setting up the next timer
