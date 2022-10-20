@@ -1,6 +1,8 @@
 # Just Practice
 
-Welcome to my capstone prject app "Just Practice"!
+Welcome to my capstone project app "Just Practice"!
+
+
 
 ## List of Sources
 
