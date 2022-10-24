@@ -3,7 +3,7 @@
 ## Welcome to my capstone project app "[Just Practice](https://just-practice.vercel.app/)"!
 
 This timer app helps you to focus on your guitar exercises and get the most out of your time.
-Customize your timer chain, repeat your training the next day and don’t waist time on setting up the next timer
+Customize your timer chain, repeat your training the next day and don’t waste time on setting up the next timer
 nor remembering the next exercise to  >stay focussed >> save time >>> just practice
 
 ## Demo
