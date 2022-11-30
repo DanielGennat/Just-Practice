@@ -31,6 +31,8 @@ export default function EditTimerChainForm({
   setTimerChain,
   setTimerPointer,
   setCountdownKey,
+  settings,
+  setSettings
 }) {
   const [newTimerChain, setNewTimerChain] = useLocalStorage(
     '_timerChainStorage',
@@ -43,6 +45,21 @@ export default function EditTimerChainForm({
   }
 
   const router = useRouter();
+
+  function changeSettings(event, settings, setSettings) {
+    console.log("was clicked");
+    console.log(event.target);
+    console.log(event.target.value);
+    console.log(settings);
+    console.log(settings[0].repeatTimerChain);
+    const value = event.target.value;
+    setSettings(settings.map((setting) => {
+      if (value == 'repeat') {
+        return {...setting, repeatTimerChain: !setting.repeatTimerChain}
+      }
+      return setting;
+    }));
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -159,6 +176,16 @@ export default function EditTimerChainForm({
             <Image alt="remove" src={remove} width="64" height="64" />
           </DeleteButton>
         </ButtonWrapper>
+        <ChainSettings>
+            <RepeatCheckbox type="checkbox" id="repeatTimerChain" name="repeatTimerChain" value="repeat" checked={settings[0].repeatTimerChain} onChange={(event) =>
+                    changeSettings(
+                      event,
+                      settings,
+                      setSettings
+                    )
+                  }/>
+            <label htmlFor="repeatTimerChain">repeat timer chain</label>
+        </ChainSettings>
         <ApplyWrapper>
           <DummyDiv />
           <Apply type="submit">
@@ -287,6 +314,21 @@ const DeleteButton = styled.button`
       transparent 72%
     );
   }
+`;
+
+const ChainSettings = styled.div`
+  background-color: rgba(52, 108, 61, 0.7);
+  margin: 5px 10vw;
+  border-radius: 5px;
+  padding: 15px 0;
+  color: #caf6ff;
+`;
+
+const RepeatCheckbox = styled.input`
+  background-color: #edffdf;
+  margin: 0 1px;
+  border-radius: 50px;
+  border: none;
 `;
 
 const ApplyWrapper = styled.div`
