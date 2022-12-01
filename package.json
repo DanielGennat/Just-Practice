@@ -24,5 +24,20 @@
     "eslint-config-next": "12.3.0",
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3"
-  }
+  },
+  "description": "![Bildschirmfoto 2022-10-20 um 16 09 01](https://user-images.githubusercontent.com/109812125/196972289-88866241-5c05-406f-a25d-84a1bc6a00f9.png)",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielGennat/Just-Practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielGennat/Just-Practice/issues"
+  },
+  "homepage": "https://github.com/DanielGennat/Just-Practice#readme"
 }

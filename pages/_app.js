@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import GlobalStyle from '../components/GlobalStyles';
+import { setUpNextInterval } from '../components/TimerComponents/CountdownCircleTimerFunction';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 function MyApp({ Component, pageProps }) {
@@ -15,13 +16,8 @@ function MyApp({ Component, pageProps }) {
   );
   const [timerPointer, setTimerPointer] = useState(0);
   const [countdownKey, setCountdownKey] = useState(0);
-
-  if (
-    timerPointer + 1 < timerChain.length &&
-    timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1
-  ) {
-    setTimerPointer(timerPointer + 1);
-  }
+  const initialSettings = [{repeatTimerChain: false}];
+  const [settings, setSettings] = useLocalStorage('_settings', initialSettings);
 
   return (
     <>
@@ -35,6 +31,8 @@ function MyApp({ Component, pageProps }) {
         setTimerPointer={setTimerPointer}
         countdownKey={countdownKey}
         setCountdownKey={setCountdownKey}
+        settings={settings}
+        setSettings={setSettings}
       />
     </>
   );

@@ -7,10 +7,14 @@ export function setUpNextInterval(
   timerChain,
   timerPointer,
   setTimerPointer,
-  setCountdownKey
+  setCountdownKey,
+  settings
 ) {
   if (timerPointer + 1 < timerChain.length) {
     setTimerPointer(timerPointer + 1);
+    setCountdownKey(timerPointer + 1);
+  } else if (settings[0].repeatTimerChain === true) {
+    setTimerPointer(0);
     setCountdownKey(timerPointer + 1);
   }
 }
@@ -21,6 +25,7 @@ export default function CountdownCircleTimerFunction({
   setTimerPointer,
   countdownKey,
   setCountdownKey,
+  settings
 }) {
   const [audio, setAudio] = useState(null);
   useEffect(() => {
@@ -29,6 +34,16 @@ export default function CountdownCircleTimerFunction({
 
   function playNotificationSound() {
     audio.play();
+  }
+
+  if (timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1) {
+    setUpNextInterval(
+      timerChain,
+      timerPointer,
+      setTimerPointer,
+      setCountdownKey,
+      settings
+    )
   }
 
   return (
@@ -47,7 +62,8 @@ export default function CountdownCircleTimerFunction({
             timerChain,
             timerPointer,
             setTimerPointer,
-            setCountdownKey
+            setCountdownKey,
+            settings
           )
         }
       >

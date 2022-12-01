@@ -13,6 +13,7 @@ export default function TimerPage({
   setTimerPointer,
   countdownKey,
   setCountdownKey,
+  settings
 }) {
   return (
     <>
@@ -28,6 +29,7 @@ export default function TimerPage({
           setTimerPointer={setTimerPointer}
           countdownKey={countdownKey}
           setCountdownKey={setCountdownKey}
+          settings={settings}
         />
       </TopWrapper>
       <DisplayExerciseList
