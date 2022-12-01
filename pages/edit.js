@@ -337,7 +337,7 @@ const RepeatInput = styled.input`
 
 &:hover:before{
   background-color: #caf6ff;
-  box-shadow: 0 0 20px rgba(73, 245, 236, 1), 0 0 15px rgba(73, 245, 236, 1), 0 0 10px rgba(73, 245, 236, 1), 0 0 5px rgba(73, 245, 236, 1), 0 0 1px rgba(73, 245, 236, 1);
+  box-shadow: 0 0 10px rgba(73, 245, 236, 1), 0 0 5px rgba(73, 245, 236, 1);
 }
 
 &:checked:before{
