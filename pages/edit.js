@@ -47,11 +47,6 @@ export default function EditTimerChainForm({
   const router = useRouter();
 
   function changeSettings(event, settings, setSettings) {
-    console.log("was clicked");
-    console.log(event.target);
-    console.log(event.target.value);
-    console.log(settings);
-    console.log(settings[0].repeatTimerChain);
     const value = event.target.value;
     setSettings(settings.map((setting) => {
       if (value == 'repeat') {

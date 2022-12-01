@@ -36,6 +36,16 @@ export default function CountdownCircleTimerFunction({
     audio.play();
   }
 
+  if (timerChain[timerPointer].minutes + timerChain[timerPointer].seconds < 1) {
+    setUpNextInterval(
+      timerChain,
+      timerPointer,
+      setTimerPointer,
+      setCountdownKey,
+      settings
+    )
+  }
+
   return (
     <TimerWrapper>
       <CountdownCircleTimer
