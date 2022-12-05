@@ -13,7 +13,6 @@ export default function RenderTime(remainingTime, playNotificationSound) {
     gain.connect(audioContext.destination)
     oscillator.start(0);
     gain.gain.exponentialRampToValueAtTime(0.00001, audioContext.currentTime + 2);
-    //oscillator.stop(0.5);
     //playNotificationSound();
     return (
       <div>
