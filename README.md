@@ -9,7 +9,7 @@ nor remembering the next exercise to  >stay focussed >> save time >>> just pract
 ## Demo
 You can find the hosted version on vercel: [Just Practice](https://just-practice.vercel.app/)
 
-## Functions
+## Features
 - plays several individual timers in succession
 - visualisation of remaining time with colour gradient from turquoise/green to red
 - acoustic notification when the timer has expired
@@ -21,6 +21,7 @@ You can find the hosted version on vercel: [Just Practice](https://just-practice
 - exercise names
 - minutes
 - seconds
+- enable continuous loop
 
 ## App Impressions
 
