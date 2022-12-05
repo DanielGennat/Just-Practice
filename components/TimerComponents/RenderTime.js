@@ -5,7 +5,15 @@ export default function RenderTime(remainingTime, playNotificationSound) {
   const seconds = remainingTime % 60;
 
   if (remainingTime === 0) {
-    playNotificationSound();
+    const audioContext = new AudioContext();
+    const oscillator = audioContext.createOscillator();
+    oscillator.type = "sine";
+    const gain = audioContext.createGain();
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination)
+    oscillator.start(0);
+    gain.gain.exponentialRampToValueAtTime(0.00001, audioContext.currentTime + 2);
+    //playNotificationSound();
     return (
       <div>
         <Time>{seconds}</Time>
