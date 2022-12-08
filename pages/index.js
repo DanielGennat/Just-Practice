@@ -20,7 +20,7 @@ export default function Home() {
       <Link href="/timer">
         <Start>Start!</Start>
       </Link>
-        <EditButton bottomValue="50px"/>
+        <EditButton bottomValue="54px"/>
     </>
   );
 }
