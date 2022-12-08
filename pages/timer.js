@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import CountdownCircleTimerFunction from '../components/TimerComponents/CountdownCircleTimerFunction';
 import DisplayExerciseList from '../components/TimerComponents/DisplayExerciseList';
-import Link from 'next/link';
-import edit from '../public/edit-button.svg';
-import Image from 'next/image';
+import EditButton from '../components/EditButton';
 import BackgroundImage from '../components/BackgroundImage';
 import manPlayingGuitarOnHisBackImg from '../public/guitarOnBack.png';
 
@@ -36,11 +34,9 @@ export default function TimerPage({
         timerChain={timerChain}
         timerPointer={timerPointer}
       />
-      <EditWrapper>
-        <Link href="/edit">
-          <Image alt="edit" src={edit} width="64" height="64" />
-        </Link>
-      </EditWrapper>
+      <EditButtonPosition>
+        <EditButton />
+      </EditButtonPosition>
       <UserInteractionInfo>
         Click anywhere if you don&apos;t get any acoustic notification
       </UserInteractionInfo>
@@ -53,54 +49,10 @@ const TopWrapper = styled.div`
   justify-content: center;
 `;
 
-const EditWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  border-radius: 60px;
-  border: none;
-  padding: 5px;
-  z-index: 1;
+const EditButtonPosition = styled.div`
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-
-  &:hover {
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 35%,
-      transparent 72%
-    );
-  }
-  &:active {
-    transform: translate(-50% 1px);
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 35%,
-      transparent 72%
-    );
-  }
-`;
-
-const Home = styled.a`
-  background-color: rgba(10, 175, 230, 0.2);
-  font-weight: bold;
-  font-size: 1.5rem;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  width: 130px;
-
-  &:hover {
-    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  }
-
-  &:active {
-    transform: translateY(1px);
-    box-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0.2);
-  }
 `;
 
 const UserInteractionInfo = styled.div`

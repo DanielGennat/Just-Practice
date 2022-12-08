@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import Image from 'next/image';
 import BackgroundImage from '../components/BackgroundImage';
 import guitarOnAmplifierImg from '../public/landingImage.jpg';
-import edit from '../public/edit-button.svg';
+import EditButton from '../components/EditButton';
 
 export default function Home() {
   return (
@@ -21,11 +20,9 @@ export default function Home() {
       <Link href="/timer">
         <Start>Start!</Start>
       </Link>
-      <EditWrapper>
-        <Link href="/edit">
-          <Image alt="edit" src={edit} width="64" height="64" />
-        </Link>
-      </EditWrapper>
+      <EditButtonPosition>
+        <EditButton />
+      </EditButtonPosition>
     </>
   );
 }
@@ -76,31 +73,9 @@ const Start = styled.a`
   }
 `;
 
-const EditWrapper = styled.div`
-  background-color: transparent;
-  border-radius: 60px;
-  border: none;
-  padding: 5px;
-  bottom: 50px;
+const EditButtonPosition = styled.div`
   position: absolute;
+  bottom: 50px;
   left: 50%;
   transform: translate(-50%);
-
-  &:hover {
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 35%,
-      transparent 72%
-    );
-  }
-  &:active {
-    transform: translate(-50% 1px);
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 35%,
-      transparent 72%
-    );
-  }
 `;
