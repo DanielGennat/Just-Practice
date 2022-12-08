@@ -34,9 +34,7 @@ export default function TimerPage({
         timerChain={timerChain}
         timerPointer={timerPointer}
       />
-      <EditButtonPosition>
-        <EditButton />
-      </EditButtonPosition>
+      <EditButton bottomValue="none"/>
       <UserInteractionInfo>
         Click anywhere if you don&apos;t get any acoustic notification
       </UserInteractionInfo>
@@ -47,12 +45,6 @@ export default function TimerPage({
 const TopWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const EditButtonPosition = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
 `;
 
 const UserInteractionInfo = styled.div`

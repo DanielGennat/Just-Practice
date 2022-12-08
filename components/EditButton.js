@@ -3,9 +3,9 @@ import Image from "next/image";
 import edit from '../public/edit-button.svg';
 import styled from 'styled-components';
 
-export default function EditButton() {
+export default function EditButton({bottomValue}) {
    return (
-      <EditWrapper>
+      <EditWrapper bottomValue={bottomValue}>
         <Link href="/edit">
           <Image alt="edit" src={edit} width="64" height="64" />
         </Link>
@@ -21,6 +21,10 @@ const EditWrapper = styled.div`
   border: none;
   padding: 5px;
   z-index: 1;
+  position: absolute;
+  bottom: ${(props) => props.bottomValue};
+  left: 50%;
+  transform: translate(-50%);
 
   &:hover {
     background: radial-gradient(

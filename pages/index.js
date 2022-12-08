@@ -20,9 +20,7 @@ export default function Home() {
       <Link href="/timer">
         <Start>Start!</Start>
       </Link>
-      <EditButtonPosition>
-        <EditButton />
-      </EditButtonPosition>
+        <EditButton bottomValue="50px"/>
     </>
   );
 }
@@ -71,11 +69,4 @@ const Start = styled.a`
     transform: translate(-50% 1px);
     box-shadow: 0 0 20px rgba(255, 58, 0, 1), 0 0 20px rgba(255, 58, 0, 0.2);
   }
-`;
-
-const EditButtonPosition = styled.div`
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translate(-50%);
 `;
