@@ -9,6 +9,7 @@ import pedalsImg from '../public/pedals.jpg';
 import FormExerciseList from '../components/EditFormComponents/FormExerciseList';
 import AddButton from '../components/EditFormComponents/AddButton';
 import DeleteButton from '../components/EditFormComponents/DeleteButton';
+import ChainSettings from '../components/EditFormComponents/ChainSettings';
 
 export default function EditTimerChainForm({
   timerChain,
@@ -24,16 +25,6 @@ export default function EditTimerChainForm({
   );
 
   const router = useRouter();
-
-  function changeSettings(event, settings, setSettings) {
-    const value = event.target.value;
-    setSettings(settings.map((setting) => {
-      if (value == 'repeat') {
-        return {...setting, repeatTimerChain: !setting.repeatTimerChain}
-      }
-      return setting;
-    }));
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -71,16 +62,7 @@ export default function EditTimerChainForm({
           <AddButton newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
           <DeleteButton newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
         </ButtonWrapper>
-        <ChainSettings>
-            <RepeatInput type="checkbox" id="repeatTimerChain" name="repeatTimerChain" value="repeat" checked={settings[0].repeatTimerChain} onChange={(event) =>
-                    changeSettings(
-                      event,
-                      settings,
-                      setSettings
-                    )
-                  }/>
-            <RepeatLabel htmlFor="repeatTimerChain">repeat timer chain</RepeatLabel>
-        </ChainSettings>
+        <ChainSettings settings={settings} setSettings={setSettings} />
         <ApplyWrapper>
           <DummyDiv />
           <Apply type="submit">
@@ -110,46 +92,6 @@ const Form = styled.form`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const ChainSettings = styled.div`
-  background-color: rgba(52, 108, 61, 0.7);
-  margin: 5px 25vw;
-  border-radius: 5px;
-  padding: 15px 0;
-  color: #caf6ff;
-`;
-
-const RepeatInput = styled.input`
-  -webkit-appearance: none;
-
-  &::before{
-  margin: -2px 0 0 7px;
-  margin-right: 50px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #edffdf;
-  display: block;
-  content: "";
-  float: left;
-  margin-right: 5px;
-}
-
-&:hover:before{
-  background-color: #caf6ff;
-  box-shadow: 0 0 10px rgba(73, 245, 236, 1), 0 0 5px rgba(73, 245, 236, 1);
-}
-
-&:checked:before{
-  background-color: #caf6ff;
-  box-shadow: 0 0 20px rgba(73, 245, 236, 1), 0 0 15px rgba(73, 245, 236, 1), 0 0 10px rgba(73, 245, 236, 1), 0 0 7.5px rgba(73, 245, 236, 1), 0 0 5px rgba(73, 245, 236, 1), 0 0 2.5px rgba(73, 245, 236, 1);
-}
-`;
-
-const RepeatLabel = styled.label`
-  position: absolute;
-  margin-left: 2px;
 `;
 
 const ApplyWrapper = styled.div`
