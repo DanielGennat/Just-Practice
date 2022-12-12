@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import hook from '../public/hook.svg';
-import add from '../public/add-button.svg';
 import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -9,14 +8,7 @@ import { useRouter } from 'next/router';
 import BackgroundImage from '../components/BackgroundImage';
 import pedalsImg from '../public/pedals.jpg';
 import FormExerciseList from '../components/EditFormComponents/FormExerciseList';
-
-export function handleAdd(newTimerChain, setNewTimerChain) {
-  const addId = newTimerChain.length + 1;
-  setNewTimerChain([
-    ...newTimerChain,
-    { id: addId, minutes: 5, seconds: 0, exerciseName: '' },
-  ]);
-}
+import AddButton from '../components/EditFormComponents/AddButton';
 
 export function handleRemove(newTimerChain, setNewTimerChain) {
   const lastId = newTimerChain.length;
@@ -84,12 +76,7 @@ export default function EditTimerChainForm({
       >
         <FormExerciseList newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
         <ButtonWrapper>
-          <AddButton
-            type="button"
-            onClick={() => handleAdd(newTimerChain, setNewTimerChain)}
-          >
-            <Image alt="add" src={add} width="64" height="64" />
-          </AddButton>
+          <AddButton newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
           <DeleteButton
             type="button"
             onClick={() => handleRemove(newTimerChain, setNewTimerChain)}
@@ -136,30 +123,6 @@ const Form = styled.form`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const AddButton = styled.button`
-  background-color: transparent;
-  border-radius: 60px;
-  border: none;
-
-  &:hover {
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 55%,
-      transparent 72%
-    );
-  }
-  &:active {
-    transform: translateY(1px);
-    background: radial-gradient(
-      circle,
-      rgba(85, 255, 5, 0.1),
-      rgba(85, 255, 5, 0.8) 55%,
-      transparent 72%
-    );
-  }
 `;
 
 const DeleteButton = styled.button`
