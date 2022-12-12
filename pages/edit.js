@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 import hook from '../public/hook.svg';
-import remove from '../public/delete-button.svg';
 import FormHeadline from '../components/EditFormComponents/FormHeadline';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useRouter } from 'next/router';
@@ -9,14 +8,7 @@ import BackgroundImage from '../components/BackgroundImage';
 import pedalsImg from '../public/pedals.jpg';
 import FormExerciseList from '../components/EditFormComponents/FormExerciseList';
 import AddButton from '../components/EditFormComponents/AddButton';
-
-export function handleRemove(newTimerChain, setNewTimerChain) {
-  const lastId = newTimerChain.length;
-  if (lastId > 1) {
-    const newChain = newTimerChain.filter((timer) => timer.id !== lastId);
-    setNewTimerChain(newChain);
-  }
-}
+import DeleteButton from '../components/EditFormComponents/DeleteButton';
 
 export default function EditTimerChainForm({
   timerChain,
@@ -77,12 +69,7 @@ export default function EditTimerChainForm({
         <FormExerciseList newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
         <ButtonWrapper>
           <AddButton newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
-          <DeleteButton
-            type="button"
-            onClick={() => handleRemove(newTimerChain, setNewTimerChain)}
-          >
-            <Image alt="remove" src={remove} width="64" height="64" />
-          </DeleteButton>
+          <DeleteButton newTimerChain={newTimerChain} setNewTimerChain={setNewTimerChain} />
         </ButtonWrapper>
         <ChainSettings>
             <RepeatInput type="checkbox" id="repeatTimerChain" name="repeatTimerChain" value="repeat" checked={settings[0].repeatTimerChain} onChange={(event) =>
@@ -123,30 +110,6 @@ const Form = styled.form`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const DeleteButton = styled.button`
-  background-color: transparent;
-  border-radius: 60px;
-  border: none;
-
-  &:hover {
-    background: radial-gradient(
-      circle,
-      rgba(255, 58, 0, 0.1),
-      rgba(255, 58, 0, 0.8) 55%,
-      transparent 72%
-    );
-  }
-  &:active {
-    transform: translateY(1px);
-    background: radial-gradient(
-      circle,
-      rgba(255, 58, 0, 0.1),
-      rgba(255, 58, 0, 0.8) 55%,
-      transparent 72%
-    );
-  }
 `;
 
 const ChainSettings = styled.div`
