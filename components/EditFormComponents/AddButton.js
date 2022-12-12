@@ -2,14 +2,15 @@ import Image from "next/image";
 import add from '../../public/add-button.svg';
 import styled from "styled-components";
 
-export default function AddButton({newTimerChain, setNewTimerChain}) {
-function handleAdd(newTimerChain, setNewTimerChain) {
+export function handleAdd(newTimerChain, setNewTimerChain) {
   const addId = newTimerChain.length + 1;
   setNewTimerChain([
     ...newTimerChain,
     { id: addId, minutes: 5, seconds: 0, exerciseName: '' },
   ]);
 }
+
+export default function AddButton({newTimerChain, setNewTimerChain}) {
     return (
         <Add
             type="button"
